@@ -1,14 +1,15 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-interface CarCardProps {
+export type CarCardProps = {
+  id: number;
   name: string;
-  color?: string;
-  price?: string;
-  km?: string;
+  color: string;
+  price: number;
+  km: number;  
 }
 
-const CarCard: React.FC<CarCardProps> = ({ name, color, price, km }) => {
+const CarCard: React.FC<CarCardProps> = ({ id, name, color, price, km }) => {
   return (
     <View style={styles.container}>
       <View style={styles.detailsContainer}>
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     flexDirection: "column",
     width: "90%",
-    height: "60%",
+    height: 300,
     maxHeight: 350,
     marginTop: 20,
     alignItems: "center",
