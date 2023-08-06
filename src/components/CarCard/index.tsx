@@ -1,29 +1,28 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 export type CarCardProps = {
   id: number;
   name: string;
   color: string;
   price: number;
-  km: number;  
+  km: number; 
+  image?: string;
 }
 
-const CarCard: React.FC<CarCardProps> = ({ id, name, color, price, km }) => {
+const CarCard: React.FC<CarCardProps> = ({ image, color, name, price, km }) => {
   return (
-    <View style={styles.container}>
+    <View style={{ ...styles.container, backgroundColor: color }}>
+      <Image source={{ uri: image }} style={styles.image} />
       <View style={styles.detailsContainer}>
+        <View style={styles.nameContainer}>
         <Text style={styles.name}>{name}</Text>
-
-        <Text style={styles.color}>{color}</Text>
+        </View>
 
         <Text style={styles.price}>{price}</Text>
 
         <Text style={styles.km}>{km}</Text>
-
-        <TouchableOpacity style={styles.buyButton}>
-          <Text style={styles.buyButtonText}>Enviar</Text>
-        </TouchableOpacity>
+    
       </View>
     </View>
   );
@@ -31,15 +30,14 @@ const CarCard: React.FC<CarCardProps> = ({ id, name, color, price, km }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "black",
     flexDirection: "column",
-    width: "90%",
-    height: 300,
+    width: "98%",
+    height: 200,
     maxHeight: 350,
     marginTop: 20,
     alignItems: "center",
     alignSelf: "center",
-    borderRadius: 12,
+    borderRadius: 60,
   },
   image: {
     width: "100%",
@@ -49,11 +47,15 @@ const styles = StyleSheet.create({
   detailsContainer: {
     flex: 1,
   },
+  nameContainer: {
+    backgroundColor: "white",
+    borderRadius: 20,
+  },
   name: {
-    maxWidth: 200,
-    color: "white",
-    fontSize: 24,
-    alignSelf: "baseline",
+    color: "black",
+    fontSize: 20,
+    alignSelf: "center",
+    padding: 10,
   },
   color: {
     color: "white",

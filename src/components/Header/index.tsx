@@ -7,7 +7,8 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
-import { Feather } from "react-native-feather";
+import Feather from 'react-native-vector-icons/Feather';
+
 
 export default function Header(): JSX.Element {
   const StatusBarHeight = StatusBar.currentHeight
@@ -19,7 +20,7 @@ export default function Header(): JSX.Element {
       <View style={styles.content}>
         <Text>Home</Text>
         <TouchableOpacity style={styles.buttonUser}>
-          <Feather />
+          <Feather name="user" size={24} color="#000" />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -28,7 +29,7 @@ export default function Header(): JSX.Element {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#3e6b48",
+    backgroundColor: "#f6e7d3",
     // paddingTop: StatusBarHeight,
     flexDirection: "row",
     paddingStart: 16,

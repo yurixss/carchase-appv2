@@ -11,8 +11,8 @@ export default function Home() {
   async function getCars() {
     try {
       const response = await api.get("cars/index");
-      setCars(response.data);
-      console.log("deu bom");
+      setCars(response.data.data);
+      console.log(response.data)
     } catch (error) {
       console.error("Ocorreu um erro:", error);
     }
