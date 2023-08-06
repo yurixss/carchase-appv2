@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import CarCard, { CarCardProps } from "../../components/CarCard";
+import React from "react";
 
 export default function Home() {
   const [cars, setCars] = useState([]);
