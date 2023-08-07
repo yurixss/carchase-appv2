@@ -7,14 +7,16 @@ export type CarCardProps = {
   color: string;
   price: string;
   km: number; 
-  image?: string;
+  image: string;
 }
 
-const CarCard: React.FC<CarCardProps> = ({ image, name, price, km }) => {
+const CarCard: React.FC<CarCardProps> = ({ image, name, price }) => {
+  const defaultImage = "/Users/yurixss/carchase-appv2/assets/favicon.png";
+
   return (
     <View style={styles.container}>
 
-      <Image source={{ uri: image }} style={styles.image} />
+    <Image source={{ uri: image || defaultImage }} style={styles.image} />
 
       <View style={styles.detailsContainer}>
         <View style={styles.nameContainer}>
@@ -40,9 +42,9 @@ const styles = StyleSheet.create({
     borderRadius: 60,
   },
   image: {
-    width: "100%",
+    width: "50%",
     height: "50%",
-    borderRadius: 12,
+    alignSelf: "center",
   },
   detailsContainer: {
     flex: 1,

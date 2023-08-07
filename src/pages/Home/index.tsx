@@ -35,6 +35,7 @@ export default function Home() {
       color={item.color}
       price={item.price}
       km={item.km}
+      image={item.image}
     />
   );
 
