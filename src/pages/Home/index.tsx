@@ -1,13 +1,33 @@
-import { StyleSheet, FlatList, RefreshControl } from "react-native";
+import { FlatList, RefreshControl } from "react-native";
 import Header from "../../components/Header";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import CarCard, { CarCardProps } from "../../components/CarCard";
 import React from "react";
+import CarBrandsList from "../../components/BrandCard";
 
 export default function Home() {
   const [cars, setCars] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
+
+  const brands = [
+    {
+      id: "1",
+      logoUri: "/Users/yurixss/carchase-appv2/assets/aventador.jpeg",
+    },
+    {
+      id: "2",
+      logoUri: "/Users/yurixss/carchase-appv2/assets/aventador.jpeg",
+    },
+    {
+      id: "3",
+      logoUri: "/Users/yurixss/carchase-appv2/assets/aventador.jpeg",
+    },
+    {
+      id: "4",
+      logoUri: "/Users/yurixss/carchase-appv2/assets/aventador.jpeg",
+    }
+  ];
 
   async function getCars() {
     try {
@@ -42,6 +62,7 @@ export default function Home() {
   return (
     <>
       <Header />
+      <CarBrandsList brands={brands} />
       <FlatList
         data={cars}
         renderItem={renderItem}
@@ -53,10 +74,3 @@ export default function Home() {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#34baab",
-  },
-});
