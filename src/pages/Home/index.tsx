@@ -1,4 +1,4 @@
-import { StyleSheet, FlatList } from "react-native";
+import { StyleSheet, FlatList, RefreshControl } from "react-native";
 import Header from "../../components/Header";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
@@ -7,14 +7,19 @@ import React from "react";
 
 export default function Home() {
   const [cars, setCars] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
 
   async function getCars() {
     try {
+      setRefreshing(true);
       const response = await api.get("cars/index");
       setCars(response.data.data);
-      console.log(response.data)
-    } catch (error) {
-      console.error("Ocorreu um erro:", error);
+    } 
+    catch (error) {
+      console.error(error);
+    }
+    finally {
+      setRefreshing(false);
     }
   }
 
@@ -40,6 +45,9 @@ export default function Home() {
         data={cars}
         renderItem={renderItem}
         keyExtractor={(car) => car.id.toString()}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={getCars} />
+        }
       />
     </>
   );

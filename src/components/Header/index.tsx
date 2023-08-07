@@ -8,20 +8,24 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 import Feather from 'react-native-vector-icons/Feather';
+import SimpleSearch from "../SimpleSearch";
 
 
 export default function Header(): JSX.Element {
-  const StatusBarHeight = StatusBar.currentHeight
-    ? StatusBar.currentHeight + 1
-    : 16;
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Text>Home</Text>
+
         <TouchableOpacity style={styles.buttonUser}>
-          <Feather name="user" size={24} color="#000" />
+          <Feather name="user" size={24} color="#657a38" />
         </TouchableOpacity>
+
+        <SimpleSearch onSearch={() => {}} />
+
+        <TouchableOpacity style={styles.buttonUser}>
+          <Feather name="shopping-bag" size={24} color="#657a38" />
+        </TouchableOpacity>
+        
       </View>
     </SafeAreaView>
   );
@@ -29,8 +33,6 @@ export default function Header(): JSX.Element {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#f6e7d3",
-    // paddingTop: StatusBarHeight,
     flexDirection: "row",
     paddingStart: 16,
     paddingEnd: 16,
@@ -45,7 +47,6 @@ const styles = StyleSheet.create({
   buttonUser: {
     width: 44,
     height: 44,
-    backgroundColor: "#f6e7d3",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 44 / 2,

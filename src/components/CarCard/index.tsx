@@ -1,27 +1,27 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 
 export type CarCardProps = {
   id: number;
   name: string;
   color: string;
-  price: number;
+  price: string;
   km: number; 
   image?: string;
 }
 
-const CarCard: React.FC<CarCardProps> = ({ image, color, name, price, km }) => {
+const CarCard: React.FC<CarCardProps> = ({ image, name, price, km }) => {
   return (
-    <View style={{ ...styles.container, backgroundColor: color }}>
+    <View style={styles.container}>
+
       <Image source={{ uri: image }} style={styles.image} />
+
       <View style={styles.detailsContainer}>
         <View style={styles.nameContainer}>
-        <Text style={styles.name}>{name}</Text>
+          <Text style={styles.name}>{name}</Text>
         </View>
 
         <Text style={styles.price}>{price}</Text>
-
-        <Text style={styles.km}>{km}</Text>
     
       </View>
     </View>
@@ -31,11 +31,11 @@ const CarCard: React.FC<CarCardProps> = ({ image, color, name, price, km }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
-    width: "98%",
+    width: "97%",
+    backgroundColor: "#3e6b48",
     height: 200,
     maxHeight: 350,
     marginTop: 20,
-    alignItems: "center",
     alignSelf: "center",
     borderRadius: 60,
   },
@@ -46,6 +46,9 @@ const styles = StyleSheet.create({
   },
   detailsContainer: {
     flex: 1,
+    marginTop: -50,
+    marginLeft: 20,
+    maxWidth: 200,
   },
   nameContainer: {
     backgroundColor: "white",
@@ -53,18 +56,13 @@ const styles = StyleSheet.create({
   },
   name: {
     color: "black",
-    fontSize: 20,
+    fontSize: 15,
     alignSelf: "center",
     padding: 10,
   },
-  color: {
-    color: "white",
-    fontSize: 14,
-    marginBottom: 4,
-  },
   price: {
     color: "white",
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: "bold",
   },
   km: {
@@ -72,21 +70,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     marginTop: 10,
-  },
-  buyButton: {
-    backgroundColor: "#3e6b48",
-    maxWidth: 200,
-    borderRadius: 16,
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-    marginTop: 10,
-  },
-  buyButtonText: {
-    color: "#FFF",
-    fontSize: 14,
-    fontWeight: "bold",
-    alignSelf: "center",
-  },
+  }
 });
 
 export default CarCard;
