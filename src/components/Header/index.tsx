@@ -1,11 +1,9 @@
 import {
   StyleSheet,
-  Text,
   View,
-  StatusBar,
   TouchableOpacity,
+  SafeAreaView,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 import Feather from 'react-native-vector-icons/Feather';
 import SimpleSearch from "../SimpleSearch";
@@ -37,6 +35,7 @@ const styles = StyleSheet.create({
     paddingStart: 16,
     paddingEnd: 16,
     paddingBottom: 10,
+    paddingTop: 50,
   },
   content: {
     flex: 1,
