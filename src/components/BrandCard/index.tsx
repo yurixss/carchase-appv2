@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 30,
     backgroundColor: 'white',
+    marginBottom: 50,
   },
   logo: {
     width: 55,

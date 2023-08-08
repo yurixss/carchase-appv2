@@ -15,13 +15,13 @@ export default function Header(): JSX.Element {
       <View style={styles.content}>
 
         <TouchableOpacity style={styles.buttonUser}>
-          <Feather name="user" size={24} color="#657a38" />
+          <Feather name="user" size={28} color="#657a38" />
         </TouchableOpacity>
 
         <SimpleSearch onSearch={() => {}} />
 
         <TouchableOpacity style={styles.buttonUser}>
-          <Feather name="shopping-bag" size={24} color="#657a38" />
+          <Feather name="shopping-bag" size={28} color="#657a38" />
         </TouchableOpacity>
         
       </View>
