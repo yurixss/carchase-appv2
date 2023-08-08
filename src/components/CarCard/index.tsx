@@ -12,18 +12,19 @@ export type CarCardProps = {
 
 const CarCard: React.FC<CarCardProps> = ({ image, name, price }) => {
   const defaultImage = "/Users/yurixss/carchase-appv2/assets/favicon.png";
-
   return (
     <View style={styles.container}>
 
-    <Image source={{ uri: image || defaultImage }} style={styles.image} />
+    <Image source={require("/Users/yurixss/carchase-appv2/assets/aventador.jpeg")} style={styles.image} />
 
       <View style={styles.detailsContainer}>
         <View style={styles.nameContainer}>
           <Text style={styles.name}>{name}</Text>
         </View>
 
+        <View style={styles.priceContainer}>
         <Text style={styles.price}>{price}</Text>
+        </View>
     
       </View>
     </View>
@@ -34,36 +35,39 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
     width: "97%",
-    backgroundColor: "#3e6b48",
     height: 200,
     maxHeight: 350,
     marginTop: 20,
     alignSelf: "center",
-    borderRadius: 60,
   },
   image: {
-    width: "50%",
-    height: "50%",
+    width: "100%",
+    height: "100%",
+    borderRadius: 50,
     alignSelf: "center",
   },
   detailsContainer: {
-    flex: 1,
-    marginTop: -50,
+    position: "absolute",
+    marginTop: 20,
     marginLeft: 20,
-    maxWidth: 200,
   },
   nameContainer: {
     backgroundColor: "white",
     borderRadius: 20,
   },
   name: {
-    color: "black",
+    color: "#657a38",
     fontSize: 15,
     alignSelf: "center",
     padding: 10,
+    fontWeight: "bold",
+  },
+  priceContainer: {
+    backgroundColor: "white",
+    borderRadius: 20,
   },
   price: {
-    color: "white",
+    color: "#657a38",
     fontSize: 15,
     fontWeight: "bold",
   },

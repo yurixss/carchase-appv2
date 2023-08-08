@@ -19,7 +19,7 @@ const CarBrandsList: React.FC<CarBrandsListProps> = ({ brands }) => {
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
         <View style={styles.card}>
-          <Image source={{ uri: item.logoUri }} style={styles.logo} />
+          <Image source={item.logoUri} style={styles.logo} />
         </View>
       )}
     />
@@ -33,12 +33,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     margin: 10,
-    borderRadius: 35,
+    borderRadius: 30,
     backgroundColor: 'white',
   },
   logo: {
-    width: 100,
-    height: 100,
+    width: 55,
+    height: 55,
   },
 });
 

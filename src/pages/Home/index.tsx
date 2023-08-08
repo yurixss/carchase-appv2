@@ -13,19 +13,19 @@ export default function Home() {
   const brands = [
     {
       id: "1",
-      logoUri: "/Users/yurixss/carchase-appv2/assets/aventador.jpeg",
+      logoUri: require("/Users/yurixss/carchase-appv2/assets/logo-porsche.jpeg"),
     },
     {
       id: "2",
-      logoUri: "/Users/yurixss/carchase-appv2/assets/aventador.jpeg",
+      logoUri: require("/Users/yurixss/carchase-appv2/assets/lambo-logo.jpeg"),
     },
     {
       id: "3",
-      logoUri: "/Users/yurixss/carchase-appv2/assets/aventador.jpeg",
+      logoUri: require("/Users/yurixss/carchase-appv2/assets/ferrari-logo.jpeg"),
     },
     {
       id: "4",
-      logoUri: "/Users/yurixss/carchase-appv2/assets/aventador.jpeg",
+      logoUri: require("/Users/yurixss/carchase-appv2/assets/logo-pegeout.jpeg"),
     }
   ];
 
