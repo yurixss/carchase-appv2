@@ -13,7 +13,7 @@ export default function Home() {
   const navigation = useNavigation();
 
   const handleCardPress = (carId) => {
-    navigation.navigate('CarDetails', { carId });
+    navigation.navigate('CarDetails', { carId: 4 });
   };
 
   const brands = [
@@ -52,19 +52,6 @@ export default function Home() {
   useEffect(() => {
     getCars();
   }, []);
-
-  const renderItem = ({ item }: { item: CarCardProps }) => (
-    <CarCard
-      id={item.id}
-      key={item.id}
-      name={item.name}
-      color={item.color}
-      price={item.price}
-      km={item.km}
-      image={item.image}
-      onPress={item.onPress}
-    />
-  );
 
   return (
     <>

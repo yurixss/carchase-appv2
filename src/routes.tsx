@@ -1,15 +1,17 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Announce from "./pages/Announce";
 import { Dimensions } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+import CarDetails from "./pages/CarDetails";
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-export function Routes(): JSX.Element {
+function BottomTabNavigator(): JSX.Element {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -87,5 +89,14 @@ export function Routes(): JSX.Element {
         }}
       />
     </Tab.Navigator>
+  );
+}
+
+export function Routes(): JSX.Element {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="HomeTabs" component={BottomTabNavigator} />
+      <Stack.Screen name="CarDetails" component={CarDetails} />
+    </Stack.Navigator>
   );
 }

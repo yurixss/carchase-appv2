@@ -13,12 +13,12 @@ interface CarDetailsProps {
   }
   
 const CarDetails: React.FC<CarDetailsProps> = ({ route }) => {
-  const { carId } = route.params;
+
+  const carId = route?.params?.carId;
   const [car, setCar] = useState<Car | null>(null);
 
   useEffect(() => {
-    axios
-      api.get(`show/${carId}`)
+    api.get(`show/${carId}`)
       .then((response) => {
         setCar(response.data);
       })
@@ -26,6 +26,7 @@ const CarDetails: React.FC<CarDetailsProps> = ({ route }) => {
         console.error(error);
       });
   }, [carId]);
+  
 
   if (!car) {
     return <Text>Loading...</Text>;
