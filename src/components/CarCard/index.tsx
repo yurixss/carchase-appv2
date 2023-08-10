@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 export type CarCardProps = {
   id: number;
@@ -8,12 +8,14 @@ export type CarCardProps = {
   price: string;
   km: number; 
   image: string;
+  onPress: () => void;
 }
 
-const CarCard: React.FC<CarCardProps> = ({ image, name, price }) => {
+const CarCard: React.FC<CarCardProps> = ({ image, name, price, onPress }) => {
   const defaultImage = require("/Users/yurixss/carchase-appv2/assets/aventador.jpeg");
-  console.log(image);
+  
   return (
+    <TouchableOpacity onPress={onPress}>
     <View style={styles.container}>
 
       <Image 
@@ -33,6 +35,7 @@ const CarCard: React.FC<CarCardProps> = ({ image, name, price }) => {
     
       </View>
     </View>
+    </TouchableOpacity>
   );
 };
 

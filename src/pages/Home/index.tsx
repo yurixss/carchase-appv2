@@ -5,10 +5,16 @@ import { api } from "../../services/api";
 import CarCard, { CarCardProps } from "../../components/CarCard";
 import React from "react";
 import CarBrandsList from "../../components/BrandCard";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Home() {
   const [cars, setCars] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
+  const navigation = useNavigation();
+
+  const handleCardPress = (carId) => {
+    navigation.navigate('CarDetails', { carId });
+  };
 
   const brands = [
     {
@@ -56,6 +62,7 @@ export default function Home() {
       price={item.price}
       km={item.km}
       image={item.image}
+      onPress={item.onPress}
     />
   );
 
@@ -65,7 +72,9 @@ export default function Home() {
       <CarBrandsList brands={brands} />
       <FlatList
         data={cars}
-        renderItem={renderItem}
+        renderItem={({ item }) => (
+          <CarCard onPress={() => handleCardPress(item.id)} {...item} />
+        )}
         keyExtractor={(car) => car.id.toString()}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={getCars} />
