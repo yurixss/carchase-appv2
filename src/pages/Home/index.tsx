@@ -13,7 +13,7 @@ export default function Home() {
   const navigation = useNavigation();
 
   const handleCardPress = (carId) => {
-    navigation.navigate('CarDetails', { carId: 4 });
+    navigation.navigate('CarDetails', { carId });
   };
 
   const brands = [
@@ -39,7 +39,7 @@ export default function Home() {
     try {
       setRefreshing(true);
       const response = await api.get("cars/index");
-      setCars(response.data.data);
+      setCars(response.data);
     } 
     catch (error) {
       console.error(error);
