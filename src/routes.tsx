@@ -100,3 +100,7 @@ export function Routes(): JSX.Element {
     </Stack.Navigator>
   );
 }
+
+function componentDidMount() {
+    throw new Error("Function not implemented.");
+  }
