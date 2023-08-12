@@ -11,7 +11,7 @@ const TextApp = (props) => {
   if (!fontsLoaded) {
     return null;
   }
-
+ 
   return (
     <Text style={styles.text}>
       {props.children}
