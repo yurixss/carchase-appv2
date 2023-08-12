@@ -4,8 +4,8 @@ import { api } from '../../services/api';
 import { Car } from '../../types';
 import { useNavigation } from '@react-navigation/native';
 import TextApp from '../../components/TextApp';
-import SkeletonPlaceholder from "react-native-skeleton-placeholder";
 import { styles } from './styles';
+import { CardSkeleton } from './CardSkeleton';
 
 interface CarDetailsProps {
     route: {
@@ -48,15 +48,8 @@ export const CarDetails: React.FC<CarDetailsProps> = ({ route }) => {
   // renderiza o componente skeleton até que os dados sejam carregados
   if (isLoading && !car) {
     return (
-    <SkeletonPlaceholder>
-      <SkeletonPlaceholder.Item flexDirection="column" alignItems="center">
-        <SkeletonPlaceholder.Item width={50} height={50} borderRadius={50} />
-        <SkeletonPlaceholder.Item width={50} height={50} borderRadius={50} />
-        <SkeletonPlaceholder.Item width={50} height={50} borderRadius={50} />
-        <SkeletonPlaceholder.Item width={50} height={50} borderRadius={50} />
-      </SkeletonPlaceholder.Item>
-    </SkeletonPlaceholder>
-  );
+      <CardSkeleton/>
+    );
   }
 
   return (
@@ -74,5 +67,3 @@ export const CarDetails: React.FC<CarDetailsProps> = ({ route }) => {
     </View>
   );
 };
-
-// export default CarDetails;

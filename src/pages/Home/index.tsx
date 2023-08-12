@@ -2,7 +2,7 @@ import { FlatList, RefreshControl } from "react-native";
 import Header from "../../components/Header";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
-import CarCard, { CarCardProps } from "../../components/CarCard";
+import CarCard from "../../components/CarCard";
 import React from "react";
 import CarBrandsList from "../../components/BrandCard";
 import { useNavigation } from "@react-navigation/native";
