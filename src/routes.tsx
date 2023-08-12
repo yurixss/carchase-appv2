@@ -6,7 +6,7 @@ import Search from "./pages/Search";
 import Announce from "./pages/Announce";
 import { Dimensions } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import CarDetails from "./pages/CarDetails";
+import { CarDetails } from "./pages/CarDetails";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();

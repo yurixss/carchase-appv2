@@ -22,7 +22,6 @@ const TextApp = (props) => {
 const styles = StyleSheet.create({
   text: {
     fontFamily: 'BricolageGrotesque_28pt-Bold',
-    fontSize: 10,
   },
 });
 

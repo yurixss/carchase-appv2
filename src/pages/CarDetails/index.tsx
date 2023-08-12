@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, StyleSheet, Button } from 'react-native';
-import axios from 'axios';
+import { View, Image, Button } from 'react-native';
 import { api } from '../../services/api';
 import { Car } from '../../types';
 import { useNavigation } from '@react-navigation/native';
 import TextApp from '../../components/TextApp';
+import SkeletonPlaceholder from "react-native-skeleton-placeholder";
+import { styles } from './styles';
 
 interface CarDetailsProps {
     route: {
@@ -14,13 +15,18 @@ interface CarDetailsProps {
     };
   }
   
-const CarDetails: React.FC<CarDetailsProps> = ({ route }) => {
+export const CarDetails: React.FC<CarDetailsProps> = ({ route }) => {
 
   const carId = route?.params?.carId;
   const [car, setCar] = useState<Car | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const navigation = useNavigation();
+  const defaultImage = require("/Users/yurixss/carchase-appv2/assets/aventador.jpeg");
 
+
+  // função para buscar os dados do carro
   async function getCar() {
+    setIsLoading(true);
     try {
       const response = await api.get(`cars/show/${carId}`)
       setCar(response.data);
@@ -28,19 +34,34 @@ const CarDetails: React.FC<CarDetailsProps> = ({ route }) => {
     catch (error) {
       console.error(error);
     }
+    finally
+    {
+      setIsLoading(false);
+    }
   }
 
   useEffect(() => {
     getCar();
   }, []);
   
-  if (!car) {
-    return <Text>Loading...</Text>;
+
+  // renderiza o componente skeleton até que os dados sejam carregados
+  if (isLoading && !car) {
+    return (
+    <SkeletonPlaceholder>
+      <SkeletonPlaceholder.Item flexDirection="column" alignItems="center">
+        <SkeletonPlaceholder.Item width={50} height={50} borderRadius={50} />
+        <SkeletonPlaceholder.Item width={50} height={50} borderRadius={50} />
+        <SkeletonPlaceholder.Item width={50} height={50} borderRadius={50} />
+        <SkeletonPlaceholder.Item width={50} height={50} borderRadius={50} />
+      </SkeletonPlaceholder.Item>
+    </SkeletonPlaceholder>
+  );
   }
 
   return (
     <View style={styles.container}>
-      <Image source={{ uri: car?.image }} style={styles.image} />
+      <Image source={defaultImage} style={styles.image} />
       <View style={styles.detailsContainer}>
         <View>
           <TextApp style={styles.name}>{car?.name}</TextApp>
@@ -49,31 +70,9 @@ const CarDetails: React.FC<CarDetailsProps> = ({ route }) => {
         <TextApp style={styles.details}>KM: {car?.km}</TextApp>
         <TextApp style={styles.details}>Color: {car?.color}</TextApp>
       </View>
-        <Button title="Return" onPress={() => navigation.navigate('Home')} />
+        <Button title="Return" onPress={() => navigation.navigate('Home')} color={'black'}/>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-  },
-  name: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  image: {
-    width: '100%',
-    height: 200,
-  },
-  detailsContainer: {
-    backgroundColor: '#fff',
-    padding: 20,
-  },
-  details: {
-    fontSize: 16,
-    marginVertical: 5,
-  },
-});
-
-export default CarDetails;
+// export default CarDetails;

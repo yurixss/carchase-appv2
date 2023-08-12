@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import TextApp from "../TextApp";
 
 export type CarCardProps = {
   id: number;
@@ -26,11 +27,11 @@ const CarCard: React.FC<CarCardProps> = ({ image, name, price, onPress }) => {
 
       <View style={styles.detailsContainer}>
         <View style={styles.nameContainer}>
-          <Text style={styles.name}>{name}</Text>
+          <TextApp style={styles.name}>{name}</TextApp>
         </View>
 
         <View style={styles.priceContainer}>
-          <Text style={styles.price}>{price}</Text>
+          <TextApp style={styles.price}>{price}</TextApp>
         </View>
     
       </View>

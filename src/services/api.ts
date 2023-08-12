@@ -1,6 +1,10 @@
 import axios from "axios";
 
 export const api = axios.create({
-  // baseURL: "http://192.168.1.24:3333/",
-  baseURL: "http://192.168.0.15:3333/",
+  //APARTAMENTO
+  // baseURL: "http://192.168.0.15:3333/",
+
+  // SALA TV
+  baseURL: "http://192.168.0.111:3333/",
+
 });
