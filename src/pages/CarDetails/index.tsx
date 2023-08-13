@@ -3,7 +3,7 @@ import { View, Image, Button } from 'react-native';
 import { api } from '../../services/api';
 import { Car } from '../../types';
 import { useNavigation } from '@react-navigation/native';
-import TextApp from '../../components/TextApp';
+import TextApp from '../../components/pattern/TextApp';
 import { styles } from './styles';
 import { CardSkeleton } from './CardSkeleton';
 

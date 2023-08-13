@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
-import TextApp from "../../TextApp";
+import TextApp from "../../pattern/TextApp";
 
 export type CarCardProps = {
   id: number;

@@ -5,7 +5,7 @@ import * as Font from 'expo-font';
 
 const TextApp = (props) => {
   let [fontsLoaded] = Font.useFonts({
-    'BricolageGrotesque_28pt-Bold': require('../../../assets/fonts/BricolageGrotesque_28pt-Bold.ttf'),
+    'BricolageGrotesque_28pt-Bold': require('../../../../assets/fonts/BricolageGrotesque_28pt-Bold.ttf'),
   });
 
   if (!fontsLoaded) {

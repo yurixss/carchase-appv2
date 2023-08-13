@@ -1,10 +1,13 @@
 import React from "react";
 import { View, StyleSheet, TextInput, Button } from "react-native";
 import { useForm, Controller} from "react-hook-form";
-import TextApp from "../../components/TextApp";
+import TextApp from "../../components/pattern/TextApp";
 import { api } from "../../services/api";
+import HeaderApp from "../../components/pattern/HeaderApp";
+import { styles } from "./styles";
 
 export default function Announce(): JSX.Element {
+  const [isLoading, setIsLoading] = React.useState(false);
   const { 
     register, 
     setValue, 
@@ -15,19 +18,25 @@ export default function Announce(): JSX.Element {
   } = useForm();
 
   const onSubmit = data => {
-    console.log(data);
-
+    setIsLoading(true);
     api.post('cars/store', data)
       .then(response => {
-        console.log('oi');
+        console.log(response);
       })
       .catch(error => {
         console.log(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
   return (
+
     <View style={styles.container}>
+      <View>
+        <HeaderApp>Criar Ánuncio</HeaderApp>
+      </View>
 
       <TextApp style={styles.label}>First name</TextApp>
       <Controller
@@ -123,35 +132,11 @@ export default function Announce(): JSX.Element {
         <Button
           title="Enviar Anúncio"
           onPress={handleSubmit(onSubmit)}
+          disabled={isLoading}
         />
       </View>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  button: {
-    marginTop: 40,
-    color: 'black',
-    height: 40,
-    backgroundColor: 'blue',
-    borderRadius: 4,
-  },
-  label: {
-    color: 'black',
-    margin: 20,
-    marginLeft: 0,
-  },
-  input: {
-    backgroundColor: 'white',
-    borderColor: 'black',
-    width: '100%',
-    height: 40,
-    borderRadius: 20,
-  },
-});
+
