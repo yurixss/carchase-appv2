@@ -34,7 +34,7 @@ const SimpleSearch: React.FC<SimpleSearchProps> = ({ onSearch }) => {
 
       {searchText.length > 0 && (
         <TouchableOpacity onPress={clearSearch} style={styles.clearButton}>
-          <MaterialIcons name="clear" size={24} color="black" />
+          <MaterialIcons name="clear" size={16} color="#657a38" />
         </TouchableOpacity>
       )}
     </View>
@@ -57,6 +57,8 @@ const styles = StyleSheet.create({
   },
   clearButton: {
     padding: 10,
+    position: 'absolute',
+    marginLeft: 160,
   },
 });
 
