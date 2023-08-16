@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, TextInput, Button } from "react-native";
 import { useForm, Controller} from "react-hook-form";
 import TextApp from "../../components/pattern/TextApp";
 import { api } from "../../services/api";
 import HeaderApp from "../../components/pattern/HeaderApp";
 import { styles } from "./styles";
+import { CarImagePicker } from "../../components/shared/ImagePicker";
 
 export default function Announce(): JSX.Element {
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { 
     register, 
     setValue, 
@@ -38,9 +39,9 @@ export default function Announce(): JSX.Element {
   return (
 
     <View style={styles.container}>
-      <View>
-        <HeaderApp>Criar Anuncio</HeaderApp>
-      </View>
+
+      <HeaderApp>Criar Anuncio</HeaderApp>
+      <CarImagePicker/>
 
       <TextApp style={styles.label}>First name</TextApp>
       <Controller
@@ -157,5 +158,3 @@ export default function Announce(): JSX.Element {
     </View>
   );
 }
-
-
