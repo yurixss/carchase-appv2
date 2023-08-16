@@ -11,6 +11,8 @@ export default function Home() {
   const [cars, setCars] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const navigation = useNavigation();
+  const [searchCar, setSearchCar] = useState('');
+  const filteredCars = cars.filter(car => car.name.toLowerCase().includes(searchCar.toLowerCase()));
 
   const handleCardPress = (carId) => {
     navigation.navigate('CarDetails', { carId });
@@ -55,10 +57,10 @@ export default function Home() {
 
   return (
     <>
-      <Header />
+      <Header setSearchCar={setSearchCar} />
       <CarBrandsList brands={brands} />
       <FlatList
-        data={cars}
+        data={filteredCars}
         renderItem={({ item }) => (
           <CarCard onPress={() => handleCardPress(item.id)} {...item} />
         )}

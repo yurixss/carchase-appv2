@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, TextInput, Button } from "react-native";
+import { View, TextInput, Button } from "react-native";
 import { useForm, Controller} from "react-hook-form";
 import TextApp from "../../components/pattern/TextApp";
 import { api } from "../../services/api";
@@ -17,7 +17,7 @@ export default function Announce(): JSX.Element {
     formState: { errors } 
   } = useForm();
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     setIsLoading(true);
     api.post('cars/store', data)
       .then(response => {
@@ -31,11 +31,15 @@ export default function Announce(): JSX.Element {
       });
   };
 
+  const onReset = () => {
+    reset();
+  }
+
   return (
 
     <View style={styles.container}>
       <View>
-        <HeaderApp>Criar Ánuncio</HeaderApp>
+        <HeaderApp>Criar Anuncio</HeaderApp>
       </View>
 
       <TextApp style={styles.label}>First name</TextApp>
@@ -47,6 +51,9 @@ export default function Announce(): JSX.Element {
             onBlur={onBlur}
             onChangeText={value => onChange(value)}
             value={value}
+            autoCapitalize="words"
+            autoCorrect={true}
+            placeholder="Ex: João"
           />
         )}
         name="name"
@@ -62,6 +69,8 @@ export default function Announce(): JSX.Element {
             onBlur={onBlur}
             onChangeText={value => onChange(value)}
             value={value}
+            autoCapitalize="words"
+            autoCorrect={true}
           />
         )}
         name="model"
@@ -92,6 +101,7 @@ export default function Announce(): JSX.Element {
             onBlur={onBlur}
             onChangeText={value => onChange(value)}
             value={value}
+            inputMode="decimal"
           />
         )}
         name="km"
@@ -107,6 +117,8 @@ export default function Announce(): JSX.Element {
             onBlur={onBlur}
             onChangeText={value => onChange(value)}
             value={value}
+            maxLength={4}
+            placeholder="Ex: 0000"
           />
         )}
         name="color"
@@ -122,6 +134,7 @@ export default function Announce(): JSX.Element {
             onBlur={onBlur}
             onChangeText={value => onChange(value)}
             value={value}
+            inputMode="numeric"
           />
         )}
         name="price"
@@ -132,7 +145,13 @@ export default function Announce(): JSX.Element {
         <Button
           title="Enviar Anúncio"
           onPress={handleSubmit(onSubmit)}
-          disabled={isLoading}
+        />
+      </View>
+
+      <View style={styles.button}>
+        <Button
+          title="Limpar Campos"
+          onPress={onReset}
         />
       </View>
     </View>

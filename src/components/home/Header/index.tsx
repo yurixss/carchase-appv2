@@ -4,12 +4,12 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import Feather from 'react-native-vector-icons/Feather';
 import SimpleSearch from "../../shared/SimpleSearch";
 
 
-export default function Header(): JSX.Element {
+export default function Header({ setSearchCar }): JSX.Element {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
@@ -18,7 +18,9 @@ export default function Header(): JSX.Element {
           <Feather name="user" size={28} color="#657a38" />
         </TouchableOpacity>
 
-        <SimpleSearch onSearch={() => {}} />
+        <SimpleSearch 
+          onSearch={(value) => setSearchCar(value)}
+        />
 
         <TouchableOpacity style={styles.buttonUser}>
           <Feather name="shopping-bag" size={28} color="#657a38" />
