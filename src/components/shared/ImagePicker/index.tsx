@@ -2,6 +2,8 @@ import { useState } from "react";
 import * as ExpoImagePicker from 'expo-image-picker';
 import { View, TextInput, Button, Image, Text } from "react-native";
 import React from "react";
+import { storage } from "../../../../firebase.config";
+import { ref, uploadBytes } from "firebase/storage";
 
 export const CarImagePicker = () => {
   const [image, setImage] = useState(null);
@@ -19,9 +21,33 @@ export const CarImagePicker = () => {
     setIsLoading(false);
     
     if (!result.canceled) {
+    const uploadUrl = await uploadImageAsync(result.assets[0].uri);
     setImage(result.assets[0].uri);
     }
-};
+  };  
+
+  const uploadImageAsync = async (uri) => {
+    const blob = await new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.onload = function() {
+        resolve(xhr.response);
+      };
+      xhr.onerror = function(e) {
+        console.log(e);
+        reject(new TypeError('Network request failed'));
+      };
+      xhr.responseType = 'blob';
+      xhr.open('GET', uri, true);
+      xhr.send(null);
+    });
+    try{
+      const storageRef = ref(storage, `Images/image${Date.now()}`);
+      const result = await uploadBytes(storageRef, blob);
+    } catch (error) {
+      console.log(`Error: ${error}`);
+    }
+  };
+
   return (
     <View>
       {!image ? (
