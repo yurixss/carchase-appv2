@@ -18,18 +18,16 @@ function BottomTabNavigator(): JSX.Element {
         headerShown: false,
         tabBarHideOnKeyboard: true,
         tabBarShowLabel: false,
-        tabBarActiveTintColor: "#121212",
 
         tabBarStyle: {
           position: "absolute",
-          height: Dimensions.get('window').width / 5, 
+          height: Dimensions.get('window').width / 7, 
           width: Dimensions.get('window').width / 1.5,  
-          backgroundColor: "#121212",
+          backgroundColor: "black",
           borderTopWidth: 0,
           marginBottom: 20,
           marginLeft: 70,
           borderRadius: 50,
-          padding: 20,
           alignSelf: "center",
         },
       }}

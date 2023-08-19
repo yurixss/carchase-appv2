@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TextInput, Button } from "react-native";
+import { View, Text, Button } from "react-native";
 import { useForm, Controller} from "react-hook-form";
 import TextApp from "../../components/pattern/TextApp";
 import { api } from "../../services/api";
@@ -7,6 +7,7 @@ import HeaderApp from "../../components/pattern/HeaderApp";
 import { styles } from "./styles";
 import { CarImagePicker } from "../../components/shared/ImagePicker";
 import { ControlledTextInput } from "../../components/shared/ControlledTextInput";
+import { CardSkeleton } from "../CarDetails/CardSkeleton";
 
 type DataForm = {
   name: string;
@@ -41,6 +42,7 @@ export default function Announce(): JSX.Element {
 
   const onSubmit = (data) => {
     setIsLoading(true);
+
     api.post('cars/store', data)
       .then(response => {
         console.log(response);
@@ -58,68 +60,62 @@ export default function Announce(): JSX.Element {
   }
 
   return (
-
     <View style={styles.container}>
 
       <HeaderApp >Criar Anuncio</HeaderApp>
-      <CarImagePicker/>
 
-      {/* <TextApp style={styles.label}>Nome do Modelo:</TextApp> */}
       <ControlledTextInput
         control={control}
         label="Nome do carro"
         name="name"
-        rules={{ required: 'Nome do carro obrigatório' }}
-        placeholder="Nome do carro"
-        style={styles.input}
+        rules={{ required: true }}
       />
 
-      <TextApp style={styles.label}>Marca:</TextApp>
       <ControlledTextInput
         control={control}
+        label="Modelo"
         name="model"
         rules={{ required: true }}
-        style={styles.input}
       />
 
-      <TextApp style={styles.label}>Ano de fabricação:</TextApp>
       <ControlledTextInput
         control={control}
+        label="Ano"
         name="year"
         rules={{ required: true }}
-        style={styles.input}
+        placeholder="Ex: 2021"
       />
 
-      <TextApp style={styles.label}>Kilomentragem:</TextApp>
       <ControlledTextInput
         control={control}
+        label="Kilomentragem"
         name="km"
         rules={{ required: true }}
-        style={styles.input}
+        placeholder="Ex: 12.943"
       />
 
-      <TextApp style={styles.label}>Cor</TextApp>
       <ControlledTextInput
         control={control}
+        label='Cor'
         name="color"
         rules={{ required: true }}
-        style={styles.input}
       />
 
-      <TextApp style={styles.label}>Preço:</TextApp>
       <ControlledTextInput
         control={control}
+        label="Preço"
         name="price"
         rules={{ required: true }}
-        style={styles.input}
       />
 
-      <View style={styles.button}>
+      <CarImagePicker/>
+
+
         <Button
           title="Enviar Anúncio"
           onPress={handleSubmit(onSubmit)}
+          disabled={isLoading}
         />
-      </View>
 
       <View style={styles.button}>
         <Button
