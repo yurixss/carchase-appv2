@@ -6,6 +6,17 @@ import { api } from "../../services/api";
 import HeaderApp from "../../components/pattern/HeaderApp";
 import { styles } from "./styles";
 import { CarImagePicker } from "../../components/shared/ImagePicker";
+import { ControlledTextInput } from "../../components/shared/ControlledTextInput";
+
+type DataForm = {
+  name: string;
+  model: string;
+  year: string;
+  color: string;
+  price: string;
+  km: string;
+  description: string;
+}
 
 export default function Announce(): JSX.Element {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,7 +27,17 @@ export default function Announce(): JSX.Element {
     control, 
     reset, 
     formState: { errors } 
-  } = useForm();
+  } = useForm<DataForm>({
+    defaultValues: {
+      name: '',
+      model: '',
+      year: '',
+      color: '',
+      price: '',
+      km: '',
+      description: '',
+    }
+  });
 
   const onSubmit = (data) => {
     setIsLoading(true);
@@ -40,106 +61,57 @@ export default function Announce(): JSX.Element {
 
     <View style={styles.container}>
 
-      <HeaderApp>Criar Anuncio</HeaderApp>
+      <HeaderApp >Criar Anuncio</HeaderApp>
       <CarImagePicker/>
 
-      <TextApp style={styles.label}>First name</TextApp>
-      <Controller
+      {/* <TextApp style={styles.label}>Nome do Modelo:</TextApp> */}
+      <ControlledTextInput
         control={control}
-        render={({field: { onChange, onBlur, value }}) => (
-          <TextInput
-            style={styles.input}
-            onBlur={onBlur}
-            onChangeText={value => onChange(value)}
-            value={value}
-            autoCapitalize="words"
-            autoCorrect={true}
-            placeholder="Ex: João"
-          />
-        )}
+        label="Nome do carro"
         name="name"
-        rules={{ required: true }}
+        rules={{ required: 'Nome do carro obrigatório' }}
+        placeholder="Nome do carro"
+        style={styles.input}
       />
 
       <TextApp style={styles.label}>Marca:</TextApp>
-      <Controller
+      <ControlledTextInput
         control={control}
-        render={({field: { onChange, onBlur, value }}) => (
-          <TextInput
-            style={styles.input}
-            onBlur={onBlur}
-            onChangeText={value => onChange(value)}
-            value={value}
-            autoCapitalize="words"
-            autoCorrect={true}
-          />
-        )}
         name="model"
         rules={{ required: true }}
+        style={styles.input}
       />
 
       <TextApp style={styles.label}>Ano de fabricação:</TextApp>
-      <Controller
+      <ControlledTextInput
         control={control}
-        render={({field: { onChange, onBlur, value }}) => (
-          <TextInput
-            style={styles.input}
-            onBlur={onBlur}
-            onChangeText={value => onChange(value)}
-            value={value}
-          />
-        )}
         name="year"
         rules={{ required: true }}
+        style={styles.input}
       />
 
       <TextApp style={styles.label}>Kilomentragem:</TextApp>
-      <Controller
+      <ControlledTextInput
         control={control}
-        render={({field: { onChange, onBlur, value }}) => (
-          <TextInput
-            style={styles.input}
-            onBlur={onBlur}
-            onChangeText={value => onChange(value)}
-            value={value}
-            inputMode="decimal"
-          />
-        )}
         name="km"
         rules={{ required: true }}
+        style={styles.input}
       />
 
       <TextApp style={styles.label}>Cor</TextApp>
-      <Controller
+      <ControlledTextInput
         control={control}
-        render={({field: { onChange, onBlur, value }}) => (
-          <TextInput
-            style={styles.input}
-            onBlur={onBlur}
-            onChangeText={value => onChange(value)}
-            value={value}
-            maxLength={4}
-            placeholder="Ex: 0000"
-          />
-        )}
         name="color"
         rules={{ required: true }}
+        style={styles.input}
       />
 
       <TextApp style={styles.label}>Preço:</TextApp>
-      <Controller
+      <ControlledTextInput
         control={control}
-        render={({field: { onChange, onBlur, value }}) => (
-          <TextInput
-            style={styles.input}
-            onBlur={onBlur}
-            onChangeText={value => onChange(value)}
-            value={value}
-            inputMode="numeric"
-          />
-        )}
         name="price"
         rules={{ required: true }}
+        style={styles.input}
       />
 
       <View style={styles.button}>
