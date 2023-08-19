@@ -1,31 +1,21 @@
-import {
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  SafeAreaView,
-} from "react-native";
-import React, { useState } from "react";
+import { StyleSheet, View, TouchableOpacity, SafeAreaView } from 'react-native';
+import React, { useState } from 'react';
 import Feather from 'react-native-vector-icons/Feather';
-import SimpleSearch from "../../shared/SimpleSearch";
-
+import SimpleSearch from '../../shared/SimpleSearch';
 
 export default function Header({ setSearchCar }): JSX.Element {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-
         <TouchableOpacity style={styles.buttonUser}>
           <Feather name="user" size={28} color="#657a38" />
         </TouchableOpacity>
 
-        <SimpleSearch 
-          onSearch={(value) => setSearchCar(value)}
-        />
+        <SimpleSearch onSearch={(value) => setSearchCar(value)} />
 
         <TouchableOpacity style={styles.buttonUser}>
           <Feather name="shopping-bag" size={28} color="#657a38" />
         </TouchableOpacity>
-        
       </View>
     </SafeAreaView>
   );
@@ -33,7 +23,7 @@ export default function Header({ setSearchCar }): JSX.Element {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
+    flexDirection: 'row',
     paddingStart: 16,
     paddingEnd: 16,
     paddingBottom: 10,
@@ -41,15 +31,15 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   buttonUser: {
     width: 44,
     height: 44,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     borderRadius: 44 / 2,
   },
 });

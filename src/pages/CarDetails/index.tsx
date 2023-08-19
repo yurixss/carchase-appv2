@@ -8,34 +8,29 @@ import { styles } from './styles';
 import { CardSkeleton } from './CardSkeleton';
 
 interface CarDetailsProps {
-    route: {
-      params: {
-        carId: string;
-      };
+  route: {
+    params: {
+      carId: string;
     };
-  }
-  
-export const CarDetails: React.FC<CarDetailsProps> = ({ route }) => {
+  };
+}
 
+export const CarDetails: React.FC<CarDetailsProps> = ({ route }) => {
   const carId = route?.params?.carId;
   const [car, setCar] = useState<Car | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const navigation = useNavigation();
-  const defaultImage = require("/Users/yurixss/carchase-appv2/assets/aventador.jpeg");
-
+  const defaultImage = require('/Users/yurixss/carchase-appv2/assets/aventador.jpeg');
 
   // função para buscar os dados do carro
   async function getCar() {
     setIsLoading(true);
     try {
-      const response = await api.get(`cars/show/${carId}`)
+      const response = await api.get(`cars/show/${carId}`);
       setCar(response.data);
-    } 
-    catch (error) {
+    } catch (error) {
       console.error(error);
-    }
-    finally
-    {
+    } finally {
       setIsLoading(false);
     }
   }
@@ -43,13 +38,10 @@ export const CarDetails: React.FC<CarDetailsProps> = ({ route }) => {
   useEffect(() => {
     getCar();
   }, []);
-  
 
   // renderiza o componente skeleton até que os dados sejam carregados
   if (isLoading && !car) {
-    return (
-      <CardSkeleton/>
-    );
+    return <CardSkeleton />;
   }
 
   return (
@@ -63,7 +55,7 @@ export const CarDetails: React.FC<CarDetailsProps> = ({ route }) => {
         <TextApp style={styles.details}>KM: {car?.km}</TextApp>
         <TextApp style={styles.details}>Color: {car?.color}</TextApp>
       </View>
-        <Button title="Return" onPress={() => navigation.navigate('Home')} color={'black'}/>
+      <Button title="Return" onPress={() => navigation.navigate('Home')} color={'black'} />
     </View>
   );
 };

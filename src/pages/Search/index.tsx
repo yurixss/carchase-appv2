@@ -1,9 +1,9 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { FlatList } from "react-native";
-import { useState, useEffect } from "react";
-import { api } from "../../services/api";
-import TextApp from "../../components/pattern/TextApp";
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { FlatList } from 'react-native';
+import { useState, useEffect } from 'react';
+import { api } from '../../services/api';
+import TextApp from '../../components/pattern/TextApp';
 
 interface Car {
   id: number;
@@ -24,7 +24,7 @@ export default function Search(): JSX.Element {
     setLoading(true);
 
     try {
-      const response = await api.get("/cars/index");
+      const response = await api.get('/cars/index');
       setPage((prevPage) => [...prevPage, ...response.data]);
     } catch (error) {
       console.error(error);
@@ -60,17 +60,17 @@ export default function Search(): JSX.Element {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   item: {
-    backgroundColor: "black",
+    backgroundColor: 'black',
     padding: 30,
     marginTop: 24,
     borderRadius: 8,
   },
   text: {
     fontSize: 16,
-    color: "white",
+    color: 'white',
   },
 });

@@ -1,12 +1,12 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
-import React from "react";
-import Home from "./pages/Home";
-import Search from "./pages/Search";
-import Announce from "./pages/Announce";
-import { Dimensions } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { CarDetails } from "./pages/CarDetails";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
+import Home from './pages/Home';
+import Search from './pages/Search';
+import Announce from './pages/Announce';
+import { Dimensions } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { CarDetails } from './pages/CarDetails';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -20,15 +20,15 @@ function BottomTabNavigator(): JSX.Element {
         tabBarShowLabel: false,
 
         tabBarStyle: {
-          position: "absolute",
-          height: Dimensions.get('window').width / 7, 
-          width: Dimensions.get('window').width / 1.5,  
-          backgroundColor: "black",
+          position: 'absolute',
+          height: Dimensions.get('window').width / 7,
+          width: Dimensions.get('window').width / 1.5,
+          backgroundColor: 'black',
           borderTopWidth: 0,
           marginBottom: 20,
           marginLeft: 70,
           borderRadius: 50,
-          alignSelf: "center",
+          alignSelf: 'center',
         },
       }}
     >
@@ -38,7 +38,7 @@ function BottomTabNavigator(): JSX.Element {
         options={{
           tabBarIcon: ({ size, color, focused }) => {
             if (focused) {
-              return <Ionicons name="grid" size={size} color={"white"} />;
+              return <Ionicons name="grid" size={size} color={'white'} />;
             } else {
               return <Ionicons name="grid-outline" size={size} color={color} />;
             }
@@ -51,7 +51,7 @@ function BottomTabNavigator(): JSX.Element {
         options={{
           tabBarIcon: ({ size, color, focused }) => {
             if (focused) {
-              return <Ionicons name="flame" size={size} color={"white"} />;
+              return <Ionicons name="flame" size={size} color={'white'} />;
             } else {
               return <Ionicons name="flame-outline" size={size} color={color} />;
             }
@@ -64,7 +64,7 @@ function BottomTabNavigator(): JSX.Element {
         options={{
           tabBarIcon: ({ size, color, focused }) => {
             if (focused) {
-              return <Ionicons name="hammer" size={size} color={"white"} />;
+              return <Ionicons name="hammer" size={size} color={'white'} />;
             } else {
               return <Ionicons name="hammer-outline" size={size} color={color} />;
             }
@@ -77,11 +77,9 @@ function BottomTabNavigator(): JSX.Element {
         options={{
           tabBarIcon: ({ size, color, focused }) => {
             if (focused) {
-              return <Ionicons name="cog" size={size} color={"white"} />;
+              return <Ionicons name="cog" size={size} color={'white'} />;
             } else {
-              return (
-                <Ionicons name="cog-outline" size={size} color={color} />
-              );
+              return <Ionicons name="cog-outline" size={size} color={color} />;
             }
           },
         }}

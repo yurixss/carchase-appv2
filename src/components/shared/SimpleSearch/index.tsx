@@ -3,7 +3,6 @@ import { View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import Feather from 'react-native-vector-icons/Feather';
 
-
 interface SimpleSearchProps {
   onSearch: (text: string) => void;
 }
@@ -23,8 +22,8 @@ const SimpleSearch: React.FC<SimpleSearchProps> = ({ onSearch }) => {
 
   return (
     <View style={styles.container}>
-    <Feather name="search" size={24} color="#657a38" />
-    
+      <Feather name="search" size={24} color="#657a38" />
+
       <TextInput
         style={styles.searchInput}
         placeholder="Search"
