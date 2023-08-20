@@ -2,6 +2,7 @@ import { StyleSheet, View, TouchableOpacity, SafeAreaView } from 'react-native';
 import React, { useState } from 'react';
 import Feather from 'react-native-vector-icons/Feather';
 import SimpleSearch from '../../shared/SimpleSearch';
+import { styles } from './styles';
 
 export default function Header({ setSearchCar }): JSX.Element {
   return (
@@ -20,26 +21,3 @@ export default function Header({ setSearchCar }): JSX.Element {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    paddingStart: 16,
-    paddingEnd: 16,
-    paddingBottom: 10,
-    paddingTop: 50,
-  },
-  content: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  buttonUser: {
-    width: 44,
-    height: 44,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 44 / 2,
-  },
-});

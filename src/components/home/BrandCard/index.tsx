@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Image, FlatList, StyleSheet, Dimensions } from 'react-native';
+import { View, Image, FlatList } from 'react-native';
+import { styles } from './styles';
 
 type CarBrand = {
   id: string;
@@ -25,22 +26,5 @@ const CarBrandsList: React.FC<CarBrandsListProps> = ({ brands }) => {
     />
   );
 };
-
-const styles = StyleSheet.create({
-  card: {
-    width: Dimensions.get('window').width / 5.0,
-    height: Dimensions.get('window').width / 5.0,
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 10,
-    borderRadius: 30,
-    backgroundColor: 'white',
-    marginBottom: 50,
-  },
-  logo: {
-    width: 55,
-    height: 55,
-  },
-});
 
 export default CarBrandsList;
