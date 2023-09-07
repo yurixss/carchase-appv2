@@ -29,7 +29,7 @@ const CustomTextInput: React.FC<TextInputProps> = (props) => {
 
 const styles = StyleSheet.create({
   input: {
-    backgroundColor: '#a69a90',
+    backgroundColor: 'grey',
     width: '90%',
     height: 40,
     borderRadius: 10,

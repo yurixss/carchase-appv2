@@ -4,7 +4,7 @@ import React from 'react';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import Announce from './pages/Announce';
-import { Dimensions } from 'react-native';
+import { Dimensions, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { CarDetails } from './pages/CarDetails';
 
@@ -12,6 +12,11 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 function BottomTabNavigator(): JSX.Element {
+  const iconStyle = {
+    position: 'absolute',
+    paddingTop: 30,
+  };
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -28,7 +33,6 @@ function BottomTabNavigator(): JSX.Element {
           marginBottom: 20,
           marginLeft: 70,
           borderRadius: 50,
-          alignSelf: 'center',
         },
       }}
     >
@@ -37,11 +41,15 @@ function BottomTabNavigator(): JSX.Element {
         component={Home}
         options={{
           tabBarIcon: ({ size, color, focused }) => {
-            if (focused) {
-              return <Ionicons name="grid" size={size} color={'white'} />;
-            } else {
-              return <Ionicons name="grid-outline" size={size} color={color} />;
-            }
+            return (
+              <View style={iconStyle}>
+                {focused ? (
+                  <Ionicons name="car" size={size} color={'white'} />
+                ) : (
+                  <Ionicons name="car-outline" size={size} color={color} />
+                )}
+              </View>
+            );
           },
         }}
       />
@@ -50,24 +58,15 @@ function BottomTabNavigator(): JSX.Element {
         component={Announce}
         options={{
           tabBarIcon: ({ size, color, focused }) => {
-            if (focused) {
-              return <Ionicons name="flame" size={size} color={'white'} />;
-            } else {
-              return <Ionicons name="flame-outline" size={size} color={color} />;
-            }
-          },
-        }}
-      />
-      <Tab.Screen
-        name="Teste"
-        component={Announce}
-        options={{
-          tabBarIcon: ({ size, color, focused }) => {
-            if (focused) {
-              return <Ionicons name="hammer" size={size} color={'white'} />;
-            } else {
-              return <Ionicons name="hammer-outline" size={size} color={color} />;
-            }
+            return (
+              <View style={iconStyle}>
+                {focused ? (
+                  <Ionicons name="add-circle" size={size} color={'white'} />
+                ) : (
+                  <Ionicons name="add-circle-outline" size={size} color={color} />
+                )}
+              </View>
+            );
           },
         }}
       />
@@ -76,11 +75,15 @@ function BottomTabNavigator(): JSX.Element {
         component={Search}
         options={{
           tabBarIcon: ({ size, color, focused }) => {
-            if (focused) {
-              return <Ionicons name="cog" size={size} color={'white'} />;
-            } else {
-              return <Ionicons name="cog-outline" size={size} color={color} />;
-            }
+            return (
+              <View style={iconStyle}>
+                {focused ? (
+                  <Ionicons name="settings" size={size} color={'white'} />
+                ) : (
+                  <Ionicons name="settings-outline" size={size} color={color} />
+                )}
+              </View>
+            );
           },
         }}
       />
