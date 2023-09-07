@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Image, TouchableOpacity } from 'react-native';
 import TextApp from '../../pattern/TextApp';
 import { styles } from './styles';
+import Reanimated, { SlideInLeft, SlideInUp } from 'react-native-reanimated';
 
 export type CarCardProps = {
   id: number;
@@ -19,12 +20,13 @@ const CarCard: React.FC<CarCardProps> = ({ image, name, price, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.container}>
-        <Image
+        <Reanimated.Image
+          key={image}
+          entering={SlideInLeft.duration(500)}
           source={image ? { uri: image } : defaultImage}
           style={styles.image}
           onError={(e) => console.log(e.nativeEvent.error)}
         />
-
         <View style={styles.detailsContainer}>
           <View style={styles.nameContainer}>
             <TextApp style={styles.name}>{name}</TextApp>
