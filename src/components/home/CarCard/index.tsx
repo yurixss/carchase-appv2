@@ -3,6 +3,7 @@ import { View, Image, TouchableOpacity } from 'react-native';
 import TextApp from '../../pattern/TextApp';
 import { styles } from './styles';
 import Reanimated, { SlideInLeft } from 'react-native-reanimated';
+import { Ionicons } from '@expo/vector-icons';
 
 export type CarCardProps = {
   id: number;
@@ -35,6 +36,8 @@ const CarCard: React.FC<CarCardProps> = ({ image, name, price, onPress }) => {
           <View style={styles.priceContainer}>
             <TextApp style={styles.price}>{price}</TextApp>
           </View>
+
+          <Ionicons name="heart-outline" size={16} color={'pink'} style={styles.icon} />
         </View>
       </View>
     </TouchableOpacity>

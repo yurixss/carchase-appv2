@@ -52,7 +52,7 @@ function BottomTabNavigator(): JSX.Element {
           backgroundColor: 'black',
           opacity: tabBarOpacity,
           borderTopWidth: 0,
-          marginBottom: 20,
+          marginBottom: 15,
           marginLeft: 70,
           borderRadius: 40,
         },

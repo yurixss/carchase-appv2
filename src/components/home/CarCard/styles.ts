@@ -12,8 +12,8 @@ export const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%',
-    borderRadius: 50,
     alignSelf: 'center',
+    borderRadius: 50,
   },
   detailsContainer: {
     position: 'absolute',
@@ -23,19 +23,20 @@ export const styles = StyleSheet.create({
   nameContainer: {
     backgroundColor: 'white',
     borderRadius: 20,
+    padding: 5,
   },
   name: {
     color: '#657a38',
-    fontSize: 15,
-    alignSelf: 'center',
-    padding: 10,
     fontWeight: 'bold',
+    alignSelf: 'center',
+    fontSize: 15,
+    padding: 10,
   },
   priceContainer: {
     backgroundColor: 'white',
     borderRadius: 20,
-    width: 90,
     marginTop: 10,
+    padding: 5,
   },
   price: {
     color: '#657a38',
@@ -48,5 +49,8 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginTop: 10,
+  },
+  icon: {
+    marginLeft: 'auto',
   },
 });
