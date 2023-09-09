@@ -16,9 +16,9 @@ export default function Home() {
     car.name.toLowerCase().includes(searchCar.toLowerCase())
   );
 
-  const handleCardPress = (carId) => {
-    navigation.navigate('CarDetails', { carId });
-  };
+  // const handleCardPress = (carId) => {
+  //   navigation.navigate('CarDetails', { carId });
+  // };
 
   const brands = [
     {
@@ -36,6 +36,14 @@ export default function Home() {
     {
       id: '4',
       logoUri: require('/Users/yurixss/carchase-appv2/assets/logo-pegeout.jpeg'),
+    },
+    {
+      id: '4',
+      logoUri: require('/Users/yurixss/carchase-appv2/assets/bmw-logo.jpeg'),
+    },
+    {
+      id: '4',
+      logoUri: require('/Users/yurixss/carchase-appv2/assets/logo-audi.jpeg'),
     },
   ];
 

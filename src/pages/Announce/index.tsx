@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { View, Text, Button } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { api } from '../../services/api';
@@ -53,8 +53,8 @@ export default function Announce(): JSX.Element {
           text1: 'Carro anunciado com sucesso!',
           text2: 'Seu anúncio já está disponível para visualização.',
         });
-        console.warn(response);
         reset();
+        // navigation.navigate('Home');
       })
       .catch((error) => {
         console.log(error);
@@ -83,7 +83,7 @@ export default function Announce(): JSX.Element {
 
         <ControlledTextInput
           control={control}
-          label="Modelo"
+          label="Marca"
           name="model"
           rules={{ required: true }}
         />

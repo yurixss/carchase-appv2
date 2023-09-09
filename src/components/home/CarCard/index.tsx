@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Image, TouchableOpacity } from 'react-native';
 import TextApp from '../../pattern/TextApp';
 import { styles } from './styles';
-import Reanimated, { SlideInLeft, SlideInUp } from 'react-native-reanimated';
+import Reanimated, { SlideInLeft } from 'react-native-reanimated';
 
 export type CarCardProps = {
   id: number;
@@ -22,7 +22,7 @@ const CarCard: React.FC<CarCardProps> = ({ image, name, price, onPress }) => {
       <View style={styles.container}>
         <Reanimated.Image
           key={image}
-          entering={SlideInLeft.duration(500)}
+          entering={SlideInLeft.duration(800)}
           source={image ? { uri: image } : defaultImage}
           style={styles.image}
           onError={(e) => console.log(e.nativeEvent.error)}

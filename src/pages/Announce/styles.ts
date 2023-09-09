@@ -19,4 +19,8 @@ export const styles = StyleSheet.create({
     color: 'black',
     marginTop: 20,
   },
+  animatedContainer: {
+    flex: 1,
+    flexDirection: 'row',
+  },
 });
