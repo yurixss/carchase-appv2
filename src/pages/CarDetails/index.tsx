@@ -5,7 +5,7 @@ import { Car } from '../../types';
 import { useNavigation } from '@react-navigation/native';
 import TextApp from '../../components/pattern/TextApp';
 import { styles } from './styles';
-import { CardSkeleton } from './CardSkeleton';
+import Reanimated, { SlideInLeft, SlideInUp } from 'react-native-reanimated';
 
 interface CarDetailsProps {
   route: {
@@ -15,7 +15,7 @@ interface CarDetailsProps {
   };
 }
 
-export const CarDetails: React.FC<CarDetailsProps> = ({ route }) => {
+export const CarDetails: React.FC<CarDetailsProps> = ({ route, image }) => {
   const carId = route?.params?.carId;
   const [car, setCar] = useState<Car | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -39,14 +39,14 @@ export const CarDetails: React.FC<CarDetailsProps> = ({ route }) => {
     getCar();
   }, []);
 
-  // renderiza o componente skeleton até que os dados sejam carregados
-  if (isLoading && !car) {
-    return <CardSkeleton />;
-  }
-
   return (
     <View style={styles.container}>
-      <Image source={defaultImage} style={styles.image} />
+      <Reanimated.Image
+        key={image}
+        entering={SlideInUp.duration(500)}
+        source={image ? { uri: image } : defaultImage}
+        style={styles.image}
+      />
       <View style={styles.detailsContainer}>
         <View>
           <TextApp style={styles.name}>{car?.name}</TextApp>
@@ -55,7 +55,11 @@ export const CarDetails: React.FC<CarDetailsProps> = ({ route }) => {
         <TextApp style={styles.details}>KM: {car?.km}</TextApp>
         <TextApp style={styles.details}>Color: {car?.color}</TextApp>
       </View>
-      <Button title="Return" onPress={() => navigation.navigate('Home')} color={'black'} />
+      <Button
+        title="Return"
+        onPress={() => navigation.navigate('HomeTabs', { screen: 'Home' })}
+        color={'black'}
+      />
     </View>
   );
 };

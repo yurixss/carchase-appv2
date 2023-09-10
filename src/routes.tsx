@@ -8,6 +8,14 @@ import { Dimensions, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { CarDetails } from './pages/CarDetails';
 import { Configs } from './pages/Configs';
+import Login from './pages/Login';
+
+//tipando para n dar error 'parâmetro do tipo 'never'.ts'
+export type RootStackParamList = {
+  CarDetails: {
+    carId: number;
+  };
+};
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -141,6 +149,7 @@ function BottomTabNavigator(): JSX.Element {
 export function Routes(): JSX.Element {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="HomeTabs" component={BottomTabNavigator} />
       <Stack.Screen name="CarDetails" component={CarDetails} />
     </Stack.Navigator>

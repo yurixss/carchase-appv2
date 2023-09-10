@@ -5,20 +5,21 @@ import { api } from '../../services/api';
 import CarCard from '../../components/home/CarCard';
 import React from 'react';
 import CarBrandsList from '../../components/home/BrandCard';
-import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../../routes';
 
 export default function Home() {
   const [cars, setCars] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParamList, 'CarDetails'>>();
   const [searchCar, setSearchCar] = useState('');
   const filteredCars = cars.filter((car) =>
     car.name.toLowerCase().includes(searchCar.toLowerCase())
   );
 
-  // const handleCardPress = (carId) => {
-  //   navigation.navigate('CarDetails', { carId });
-  // };
+  const handleCardPress = (carId) => {
+    navigation.navigate('CarDetails', { carId });
+  };
 
   const brands = [
     {

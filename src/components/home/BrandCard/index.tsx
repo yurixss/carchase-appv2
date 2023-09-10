@@ -22,7 +22,7 @@ const CarBrandsList: React.FC<CarBrandsListProps> = ({ brands }) => {
       renderItem={({ item }) => (
         <View style={styles.card}>
           <Reanimated.Image
-            entering={SlideInUp.duration(1000)}
+            entering={SlideInUp.duration(600)}
             source={item.logoUri}
             style={styles.logo}
           />
