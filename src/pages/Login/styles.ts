@@ -1,30 +1,25 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  justify-content: center;
-  background-color: #f0f0f7;
-`;
-
-export const LogoContainer = styled.View`
-  max-height: 60%;
-  justify-content: center;
-  align-items: center;
+  height: 100%;
 `;
 
 export const Logo = styled.Image`
   width: 100%;
   height: 100%;
+  position: absolute;
 `;
 
 export const Title = styled.Text`
   font-size: 32px;
   max-width: 180px;
   margin-bottom: 10px;
+  font-weight: 700;
 `;
 
 export const InputContainer = styled.View`
-  margin-top: 10px;
   padding: 30px;
+  top: 15%;
 `;
 
 export const TextInput = styled.TextInput`

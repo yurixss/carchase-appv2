@@ -7,7 +7,6 @@ import {
   LoginButton,
   LoginButtonText,
   Logo,
-  LogoContainer,
   TextInput,
   Title,
 } from './styles';
@@ -16,7 +15,7 @@ export default function Login({ navigation }) {
   // const navigation = useNavigation();
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const defaultImage = require('/Users/yurixss/carchase-appv2/assets/login.jpeg');
+  const defaultImage = require('/Users/yurixss/carchase-appv2/assets/login2.jpeg');
 
   const handleLogin = () => {
     navigation.navigate('HomeTabs', { screen: 'Home' });
@@ -24,10 +23,7 @@ export default function Login({ navigation }) {
 
   return (
     <Container>
-      <LogoContainer>
-        <Logo source={defaultImage} />
-      </LogoContainer>
-
+      <Logo source={defaultImage} />
       <InputContainer>
         <Title>Login</Title>
         <TextInput placeholder="Username" value={username} onChangeText={setUsername} />
