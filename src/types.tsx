@@ -5,4 +5,8 @@ export type Car = {
   km: number;
   price: number;
   image: string;
+  year: number;
+  model: string;
+  description: string;
+  created_at: string;
 };

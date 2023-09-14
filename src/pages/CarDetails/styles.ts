@@ -1,29 +1,33 @@
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native';
+import TextApp from '../../components/pattern/TextApp';
+import { screenHeight } from '../../utils';
+import { RFValue } from 'react-native-responsive-fontsize';
 
-export const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    marginTop: '20%',
-  },
-  name: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  image: {
-    width: '100%',
-    height: 200,
-  },
-  detailsContainer: {
-    backgroundColor: '#fff',
-    padding: 20,
-  },
-  details: {
-    fontSize: 16,
-    marginVertical: 5,
-  },
-  button: {
-    marginTop: 20,
-    padding: 20,
-    height: 50,
-  },
-});
+export const Container = styled.View`
+  height: 100%;
+  padding: ${RFValue(16, screenHeight)}px;
+  margin-top: 20%;
+`;
+
+export const Name = styled.Text`
+  font-size: 24px;
+  font-weight: bold;
+`;
+
+export const DetailsContainer = styled.View`
+  background-color: #fff;
+  padding: 20px;
+`;
+
+export const Details = styled(TextApp)`
+  font-size: 16px;
+  margin-left: 5px;
+`;
+
+export const Button = styled.TouchableOpacity`
+  margin-top: 20px;
+  height: 50px;
+  width: 20px;
+  background-color: #dc1637;
+  margin-right: auto;
+`;

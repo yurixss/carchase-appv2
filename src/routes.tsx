@@ -9,6 +9,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { CarDetails } from './pages/CarDetails';
 import { Configs } from './pages/Configs';
 import Login from './pages/Login';
+import { screenWidth } from './utils';
 
 //tipando para n dar error 'parâmetro do tipo 'never'.ts'
 export type RootStackParamList = {
@@ -55,9 +56,9 @@ function BottomTabNavigator(): JSX.Element {
 
         tabBarStyle: {
           position: 'absolute',
-          height: Dimensions.get('window').width / 7,
-          width: Dimensions.get('window').width / 1.5,
-          backgroundColor: 'black',
+          height: screenWidth / 7,
+          width: screenWidth / 1.5,
+          backgroundColor: 'white',
           opacity: tabBarOpacity,
           borderTopWidth: 0,
           marginBottom: 15,

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, Image, Button } from 'react-native';
 import { api } from '../../services/api';
 import { Car } from '../../types';
 import { useNavigation } from '@react-navigation/native';
-import TextApp from '../../components/pattern/TextApp';
-import { styles } from './styles';
-import Reanimated, { SlideInLeft, SlideInUp } from 'react-native-reanimated';
+import { Button, Container, Details, DetailsContainer, Name } from './styles';
+import Reanimated, { SlideInUp } from 'react-native-reanimated';
 
 interface CarDetailsProps {
   route: {
@@ -13,6 +11,7 @@ interface CarDetailsProps {
       carId: string;
     };
   };
+  image: string;
 }
 
 export const CarDetails: React.FC<CarDetailsProps> = ({ route, image }) => {
@@ -40,26 +39,33 @@ export const CarDetails: React.FC<CarDetailsProps> = ({ route, image }) => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Reanimated.Image
-        key={image}
-        entering={SlideInUp.duration(500)}
-        source={image ? { uri: image } : defaultImage}
-        style={styles.image}
-      />
-      <View style={styles.detailsContainer}>
-        <View>
-          <TextApp style={styles.name}>{car?.name}</TextApp>
-          <TextApp style={styles.details}>Price: ${car?.price}</TextApp>
-        </View>
-        <TextApp style={styles.details}>KM: {car?.km}</TextApp>
-        <TextApp style={styles.details}>Color: {car?.color}</TextApp>
-      </View>
+    <Container>
       <Button
         title="Return"
         onPress={() => navigation.navigate('HomeTabs', { screen: 'Home' })}
         color={'black'}
       />
-    </View>
+
+      <Reanimated.Image
+        key={image}
+        entering={SlideInUp.duration(500)}
+        source={image ? { uri: image } : defaultImage}
+        style={{
+          width: '100%',
+          height: 200,
+          resizeMode: 'cover',
+          borderRadius: 20,
+        }}
+      />
+
+      <DetailsContainer>
+        <Name>{car?.name}</Name>
+        <Details>Brand: {car?.model}</Details>
+        <Details>KM: {car?.km}</Details>
+        <Details>Color: {car?.color}</Details>
+        <Details>Year: {car?.year}</Details>
+        <Details>Price: ${car?.price}</Details>
+      </DetailsContainer>
+    </Container>
   );
 };
