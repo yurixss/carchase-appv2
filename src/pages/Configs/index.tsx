@@ -4,7 +4,7 @@ import { Container, LogoutButton } from './styles';
 
 export const Configs = ({ navigation }) => {
   const handleLogout = () => {
-    navigation.navigate('LoginScreen');
+    navigation.navigate('Login');
   };
   return (
     <Container>

@@ -28,16 +28,15 @@ const CarCard = ({ image, name, price, onPress }: CarCardProps) => {
           style={styles.image}
           onError={(e) => console.log(e.nativeEvent.error)}
         />
+
         <View style={styles.detailsContainer}>
           <View style={styles.nameContainer}>
-            <TextApp style={styles.name}>{name}</TextApp>
+            <TextApp>{name}</TextApp>
           </View>
 
           <View style={styles.priceContainer}>
             <TextApp style={styles.price}>{price}</TextApp>
           </View>
-
-          <Ionicons name="heart-outline" size={16} color={'pink'} style={styles.icon} />
         </View>
       </View>
     </TouchableOpacity>

@@ -19,7 +19,9 @@ import {
 import { CarImagePicker } from '../../components/shared/ImagePicker';
 import { ControlledTextInput } from '../../components/shared/ControlledTextInput';
 import Toast from 'react-native-toast-message';
-import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
+import { RootStackParamList } from '../../routes';
 
 type DataForm = {
   name: string;
@@ -33,8 +35,8 @@ type DataForm = {
 
 export default function Announce(): JSX.Element {
   const [isLoading, setIsLoading] = useState(false);
-  const navigation = useNavigation();
-  const [step, setStep] = useState<'details' | 'photos' | 'review'>('details');
+  const navigation = useNavigation<NavigationProp<RootStackParamList, 'Home'>>();
+  const [step, setStep] = useState<'initial' | 'details' | 'photos' | 'review'>('initial');
   const {
     register,
     setValue,
@@ -65,8 +67,9 @@ export default function Announce(): JSX.Element {
           text1: 'Carro anunciado com sucesso!',
           text2: 'Seu anúncio já está disponível para visualização.',
         });
+        setStep('initial');
         reset();
-        // navigation.navigate('Home');
+        navigation.navigate('Home');
       })
       .catch((error) => {
         console.log(error);
@@ -81,6 +84,30 @@ export default function Announce(): JSX.Element {
   };
 
   //step 1
+  const initial = () => {
+    return (
+      <>
+        <Header>
+          <StepContainer>
+            <Ionicons name="car-outline" size={29} color="white" />
+          </StepContainer>
+          <Title>Deseja anunciar seu veículo?</Title>
+        </Header>
+
+        <ButtonContainer>
+          <ClearButton onPress={() => navigation.navigate('Home')}>
+            <ButtonText>Não</ButtonText>
+          </ClearButton>
+
+          <NextButton onPress={() => setStep('details')}>
+            <ButtonText>Sim</ButtonText>
+          </NextButton>
+        </ButtonContainer>
+      </>
+    );
+  };
+
+  //step 2
   const details = () => {
     return (
       <>
@@ -150,7 +177,7 @@ export default function Announce(): JSX.Element {
     );
   };
 
-  //step 2
+  //step 3
   const photos = () => {
     return (
       <>
@@ -175,7 +202,7 @@ export default function Announce(): JSX.Element {
     );
   };
 
-  //step 3
+  //step 4
   const review = () => {
     return (
       <>
@@ -215,6 +242,18 @@ export default function Announce(): JSX.Element {
             name="price"
             rules={{ required: true }}
           />
+          <ControlledTextInput
+            control={control}
+            label="Possui riscos?"
+            name="price"
+            rules={{ required: true }}
+          />
+          <ControlledTextInput
+            control={control}
+            label="Possui batidas?"
+            name="price"
+            rules={{ required: true }}
+          />
         </Body>
 
         <ConfirmButton onPress={handleSubmit(onSubmit)} disabled={isLoading}>
@@ -225,6 +264,7 @@ export default function Announce(): JSX.Element {
   };
 
   const stack = {
+    initial,
     details,
     photos,
     review,

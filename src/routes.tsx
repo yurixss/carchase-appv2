@@ -2,7 +2,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import React, { useEffect, useState } from 'react';
 import Home from './pages/Home';
-import Search from './pages/Search';
 import Announce from './pages/Announce';
 import { Dimensions, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -16,6 +15,7 @@ export type RootStackParamList = {
   CarDetails: {
     carId: number;
   };
+  Home: string;
 };
 
 const Tab = createBottomTabNavigator();
@@ -68,28 +68,6 @@ function BottomTabNavigator(): JSX.Element {
       }}
     >
       <Tab.Screen
-        name="Home"
-        component={Home}
-        options={{
-          tabBarIcon: ({ size, color, focused }) => {
-            return (
-              <View style={iconStyle}>
-                {focused ? (
-                  <Ionicons name="car" size={size} color={'green'} onTouchStart={handleIconPress} />
-                ) : (
-                  <Ionicons
-                    name="car-outline"
-                    size={size}
-                    color={color}
-                    onTouchStart={handleIconPress}
-                  />
-                )}
-              </View>
-            );
-          },
-        }}
-      />
-      <Tab.Screen
         name="Announce"
         component={Announce}
         options={{
@@ -106,6 +84,28 @@ function BottomTabNavigator(): JSX.Element {
                 ) : (
                   <Ionicons
                     name="add-circle-outline"
+                    size={size}
+                    color={color}
+                    onTouchStart={handleIconPress}
+                  />
+                )}
+              </View>
+            );
+          },
+        }}
+      />
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarIcon: ({ size, color, focused }) => {
+            return (
+              <View style={iconStyle}>
+                {focused ? (
+                  <Ionicons name="car" size={size} color={'green'} onTouchStart={handleIconPress} />
+                ) : (
+                  <Ionicons
+                    name="car-outline"
                     size={size}
                     color={color}
                     onTouchStart={handleIconPress}

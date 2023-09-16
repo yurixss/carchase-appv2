@@ -15,6 +15,8 @@ export default function Home() {
   const [refreshing, setRefreshing] = useState(false);
   const navigation = useNavigation<NavigationProp<RootStackParamList, 'CarDetails'>>();
   const [searchCar, setSearchCar] = useState('');
+
+  // cars array filter by searchCar
   const filteredCars = cars.filter((car) =>
     car.name.toLowerCase().includes(searchCar.toLowerCase())
   );
@@ -23,15 +25,7 @@ export default function Home() {
     navigation.navigate('CarDetails', { carId });
   };
 
-  async function getBrands() {
-    try {
-      const response = await api.get('brands/index');
-      setBrands(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
+  //TODO - Remove this mock
   const brandsXumbada = [
     {
       id: '1',
@@ -58,6 +52,15 @@ export default function Home() {
       logo: require('/Users/yurixss/carchase-appv2/assets/logo-audi.jpeg'),
     },
   ];
+
+  async function getBrands() {
+    try {
+      const response = await api.get('brands/index');
+      setBrands(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   async function getCars() {
     try {
