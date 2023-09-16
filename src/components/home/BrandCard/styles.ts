@@ -1,18 +1,19 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import { Dimensions } from 'react-native';
+import styled from 'styled-components/native';
 
-export const styles = StyleSheet.create({
-  card: {
-    width: Dimensions.get('window').width / 5.0,
-    height: Dimensions.get('window').width / 5.0,
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 10,
-    borderRadius: 30,
-    backgroundColor: 'white',
-    marginBottom: 50,
-  },
-  logo: {
-    width: 55,
-    height: 55,
-  },
-});
+export const Container = styled.View`
+  flex: 1;
+  width: ${Dimensions.get('window').width / 5.0};
+  height: ${Dimensions.get('window').width / 5.0};
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  border-radius: 30px;
+  background-color: #fff;
+  margin-bottom: 50px;
+`;
+
+export const Logo = styled.Image`
+  width: 55px;
+  height: 55px;
+`;

@@ -1,18 +1,18 @@
 import React from 'react';
-import { View, Image, FlatList } from 'react-native';
-import { styles } from './styles';
-import Reanimated, { SlideInLeft, SlideInUp } from 'react-native-reanimated';
+import { FlatList } from 'react-native';
+import { Container } from './styles';
+import Reanimated, { SlideInUp } from 'react-native-reanimated';
 
 type CarBrand = {
   id: string;
-  logoUri: string;
+  logoUri: any;
 };
 
 type CarBrandsListProps = {
   brands: CarBrand[];
 };
 
-const CarBrandsList: React.FC<CarBrandsListProps> = ({ brands }) => {
+const CarBrandsList = ({ brands }: CarBrandsListProps) => {
   return (
     <FlatList
       data={brands}
@@ -20,13 +20,16 @@ const CarBrandsList: React.FC<CarBrandsListProps> = ({ brands }) => {
       showsHorizontalScrollIndicator={false}
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
-        <View style={styles.card}>
+        <Container>
           <Reanimated.Image
             entering={SlideInUp.duration(600)}
             source={item.logoUri}
-            style={styles.logo}
+            style={{
+              width: 55,
+              height: 55,
+            }}
           />
-        </View>
+        </Container>
       )}
     />
   );

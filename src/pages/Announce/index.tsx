@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { View, Text, Button } from 'react-native';
-import { useForm, Controller } from 'react-hook-form';
+import React, { useState } from 'react';
+import { View, Button } from 'react-native';
+import { useForm } from 'react-hook-form';
 import { api } from '../../services/api';
-import HeaderApp from '../../components/pattern/HeaderApp';
-import { styles } from './styles';
+import Header from '../../components/pattern/Header';
+import { Container } from './styles';
 import { CarImagePicker } from '../../components/shared/ImagePicker';
 import { ControlledTextInput } from '../../components/shared/ControlledTextInput';
 import Toast from 'react-native-toast-message';
@@ -72,7 +72,7 @@ export default function Announce(): JSX.Element {
   const details = () => {
     return (
       <>
-        <HeaderApp>Detalhes do seu veículo</HeaderApp>
+        <Header>Detalhes do seu veículo</Header>
 
         <ControlledTextInput
           control={control}
@@ -104,13 +104,8 @@ export default function Announce(): JSX.Element {
           placeholder="Ex: 12.943"
         />
 
-        <View style={styles.button}>
-          <Button title="Limpar Campos" onPress={onReset} />
-        </View>
-
-        <View style={styles.button}>
-          <Button title="Próximo passo" onPress={() => setStep('photos')} />
-        </View>
+        <Button title="Limpar Campos" onPress={onReset} />
+        <Button title="Próximo passo" onPress={() => setStep('photos')} />
       </>
     );
   };
@@ -119,14 +114,11 @@ export default function Announce(): JSX.Element {
   const photos = () => {
     return (
       <>
-        <HeaderApp>Escolha as melhores fotos</HeaderApp>
+        <Header>Escolha as melhores fotos</Header>
         <CarImagePicker />
-        <View style={styles.button}>
-          <Button title="Próximo passo" onPress={() => setStep('review')} />
-        </View>
-        <View style={styles.button}>
-          <Button title="Voltar" onPress={() => setStep('details')} />
-        </View>
+
+        <Button title="Próximo passo" onPress={() => setStep('review')} />
+        <Button title="Voltar" onPress={() => setStep('details')} />
       </>
     );
   };
@@ -149,15 +141,9 @@ export default function Announce(): JSX.Element {
           rules={{ required: true }}
         />
 
-        <View style={styles.button}>
-          <Button title="Voltar" onPress={() => setStep('photos')} />
-        </View>
-
+        <Button title="Voltar" onPress={() => setStep('photos')} />
+        <Button title="Limpar Campos" onPress={onReset} />
         <Button title="Enviar Anúncio" onPress={handleSubmit(onSubmit)} disabled={isLoading} />
-
-        <View style={styles.button}>
-          <Button title="Limpar Campos" onPress={onReset} />
-        </View>
       </>
     );
   };
@@ -174,5 +160,5 @@ export default function Announce(): JSX.Element {
     return <View>{stack[step]()}</View>;
   };
 
-  return <View style={styles.container}>{drawers()}</View>;
+  return <Container>{drawers()}</Container>;
 }

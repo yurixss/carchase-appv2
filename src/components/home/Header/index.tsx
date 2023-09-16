@@ -1,23 +1,22 @@
-import { StyleSheet, View, TouchableOpacity, SafeAreaView } from 'react-native';
-import React, { useState } from 'react';
+import React from 'react';
 import Feather from 'react-native-vector-icons/Feather';
 import SimpleSearch from '../../shared/SimpleSearch';
-import { styles } from './styles';
+import { ButtonUser, Container, Content } from './styles';
 
 export default function Header({ setSearchCar }): JSX.Element {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.content}>
-        <TouchableOpacity style={styles.buttonUser}>
+    <Container>
+      <Content>
+        <ButtonUser>
           <Feather name="user" size={28} color="#657a38" />
-        </TouchableOpacity>
+        </ButtonUser>
 
         <SimpleSearch onSearch={(value) => setSearchCar(value)} />
 
-        <TouchableOpacity style={styles.buttonUser}>
+        <ButtonUser>
           <Feather name="shopping-bag" size={28} color="#657a38" />
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
+        </ButtonUser>
+      </Content>
+    </Container>
   );
 }

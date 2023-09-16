@@ -15,7 +15,7 @@ export type CarCardProps = {
   onPress: () => void;
 };
 
-const CarCard: React.FC<CarCardProps> = ({ image, name, price, onPress }) => {
+const CarCard = ({ image, name, price, onPress }: CarCardProps) => {
   const defaultImage = require('/Users/yurixss/carchase-appv2/assets/aventador.jpeg');
 
   return (
