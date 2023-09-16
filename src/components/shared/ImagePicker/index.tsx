@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import * as ExpoImagePicker from 'expo-image-picker';
-import { View, TextInput, Button, Image, Text } from 'react-native';
+import { View, Image } from 'react-native';
 import React from 'react';
 import { storage } from '../../../../firebase.config';
 import { ref, uploadBytes } from 'firebase/storage';
+import { Button, Icon, Text } from './styles';
+import { Ionicons } from '@expo/vector-icons';
 
 export const CarImagePicker = () => {
   const [image, setImage] = useState(null);
@@ -51,7 +53,10 @@ export const CarImagePicker = () => {
   return (
     <View>
       {!image ? (
-        <Button title="Imagem" onPress={pickImage} />
+        <Button onPress={pickImage}>
+          <Text>Selecionar Imagem</Text>
+          <Ionicons name="image-outline" size={34} color="white" />
+        </Button>
       ) : (
         <View>
           <Text>Imagem Selecionada</Text>

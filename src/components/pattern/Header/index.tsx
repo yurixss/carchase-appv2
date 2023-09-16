@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: 'BricolageGrotesque_28pt-Bold',
     fontSize: 25,
-    marginTop: '20%',
   },
 });
 

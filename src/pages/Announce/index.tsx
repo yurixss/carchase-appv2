@@ -1,9 +1,21 @@
 import React, { useState } from 'react';
-import { View, Button } from 'react-native';
+import { View } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { api } from '../../services/api';
-import Header from '../../components/pattern/Header';
-import { Container } from './styles';
+import {
+  BackButton,
+  Body,
+  ButtonContainer,
+  ButtonText,
+  ClearButton,
+  ConfirmButton,
+  Container,
+  NextButton,
+  Header,
+  StepContainer,
+  Title,
+  StepNumber,
+} from './styles';
 import { CarImagePicker } from '../../components/shared/ImagePicker';
 import { ControlledTextInput } from '../../components/shared/ControlledTextInput';
 import Toast from 'react-native-toast-message';
@@ -72,40 +84,68 @@ export default function Announce(): JSX.Element {
   const details = () => {
     return (
       <>
-        <Header>Detalhes do seu veículo</Header>
+        <ButtonContainer>
+          <ClearButton onPress={onReset}>
+            <ButtonText>Limpar Dados</ButtonText>
+          </ClearButton>
 
-        <ControlledTextInput
-          control={control}
-          label="Nome do carro"
-          name="name"
-          rules={{ required: true }}
-        />
+          <NextButton title="Próximo passo" onPress={() => setStep('photos')}>
+            <ButtonText>Próximo passo</ButtonText>
+          </NextButton>
+        </ButtonContainer>
 
-        <ControlledTextInput
-          control={control}
-          label="Marca"
-          name="model"
-          rules={{ required: true }}
-        />
+        <Header>
+          <StepContainer>
+            <StepNumber>1</StepNumber>
+          </StepContainer>
+          <Title>Detalhes do seu veículo</Title>
+        </Header>
 
-        <ControlledTextInput
-          control={control}
-          label="Ano"
-          name="year"
-          rules={{ required: true }}
-          placeholder="Ex: 2021"
-        />
+        <Body>
+          <ControlledTextInput
+            control={control}
+            label="Modelo do carro"
+            name="name"
+            rules={{ required: true }}
+          />
 
-        <ControlledTextInput
-          control={control}
-          label="Kilomentragem"
-          name="km"
-          rules={{ required: true }}
-          placeholder="Ex: 12.943"
-        />
+          <ControlledTextInput
+            control={control}
+            label="Marca ou empresa"
+            name="model"
+            rules={{ required: true }}
+          />
 
-        <Button title="Limpar Campos" onPress={onReset} />
-        <Button title="Próximo passo" onPress={() => setStep('photos')} />
+          <ControlledTextInput
+            control={control}
+            label="Ano de fabricação"
+            name="year"
+            rules={{ required: true }}
+            placeholder="Ex: 2021"
+          />
+
+          <ControlledTextInput
+            control={control}
+            label="Cor ou cor predominante?"
+            name="color"
+            rules={{ required: true }}
+          />
+
+          <ControlledTextInput
+            control={control}
+            label="Kilomentragem"
+            name="km"
+            rules={{ required: true }}
+            placeholder="Ex: 12.943"
+          />
+
+          <ControlledTextInput
+            control={control}
+            label="Preço"
+            name="price"
+            rules={{ required: true }}
+          />
+        </Body>
       </>
     );
   };
@@ -114,11 +154,23 @@ export default function Announce(): JSX.Element {
   const photos = () => {
     return (
       <>
-        <Header>Escolha as melhores fotos</Header>
-        <CarImagePicker />
+        <ButtonContainer>
+          <BackButton onPress={() => setStep('details')}>
+            <ButtonText>Voltar</ButtonText>
+          </BackButton>
+          <NextButton onPress={() => setStep('review')}>
+            <ButtonText>Próximo passo</ButtonText>
+          </NextButton>
+        </ButtonContainer>
 
-        <Button title="Próximo passo" onPress={() => setStep('review')} />
-        <Button title="Voltar" onPress={() => setStep('details')} />
+        <Header>
+          <StepContainer>
+            <StepNumber>2</StepNumber>
+          </StepContainer>
+          <Title>Escolha as melhores fotos</Title>
+        </Header>
+
+        <CarImagePicker />
       </>
     );
   };
@@ -127,23 +179,47 @@ export default function Announce(): JSX.Element {
   const review = () => {
     return (
       <>
-        <ControlledTextInput
-          control={control}
-          label="Cor"
-          name="color"
-          rules={{ required: true }}
-        />
+        <ButtonContainer>
+          <BackButton onPress={() => setStep('photos')}>
+            <ButtonText>Voltar</ButtonText>
+          </BackButton>
 
-        <ControlledTextInput
-          control={control}
-          label="Preço"
-          name="price"
-          rules={{ required: true }}
-        />
+          <ClearButton onPress={onReset}>
+            <ButtonText>Limpar Dados</ButtonText>
+          </ClearButton>
+        </ButtonContainer>
 
-        <Button title="Voltar" onPress={() => setStep('photos')} />
-        <Button title="Limpar Campos" onPress={onReset} />
-        <Button title="Enviar Anúncio" onPress={handleSubmit(onSubmit)} disabled={isLoading} />
+        <Header>
+          <StepContainer>
+            <StepNumber>3</StepNumber>
+          </StepContainer>
+          <Title>Detalhes Finais</Title>
+        </Header>
+
+        <Body>
+          <ControlledTextInput
+            control={control}
+            label="Possui sinistro?"
+            name="price"
+            rules={{ required: true }}
+          />
+          <ControlledTextInput
+            control={control}
+            label="Possui multas?"
+            name="price"
+            rules={{ required: true }}
+          />
+          <ControlledTextInput
+            control={control}
+            label="Possui débitos?"
+            name="price"
+            rules={{ required: true }}
+          />
+        </Body>
+
+        <ConfirmButton onPress={handleSubmit(onSubmit)} disabled={isLoading}>
+          <ButtonText>Finalizar Ánuncio</ButtonText>
+        </ConfirmButton>
       </>
     );
   };
