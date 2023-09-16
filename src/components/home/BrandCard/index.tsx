@@ -5,7 +5,7 @@ import Reanimated, { SlideInUp } from 'react-native-reanimated';
 
 type CarBrand = {
   id: string;
-  logoUri: any;
+  logo: any;
 };
 
 type CarBrandsListProps = {
@@ -23,7 +23,7 @@ const CarBrandsList = ({ brands }: CarBrandsListProps) => {
         <Container>
           <Reanimated.Image
             entering={SlideInUp.duration(600)}
-            source={item.logoUri}
+            source={item.logo}
             style={{
               width: 55,
               height: 55,

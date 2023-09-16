@@ -1,15 +1,17 @@
 import React from 'react';
-import { Button, View } from 'react-native';
 import TextApp from '../../components/pattern/TextApp';
+import { Container, LogoutButton } from './styles';
 
 export const Configs = ({ navigation }) => {
   const handleLogout = () => {
     navigation.navigate('LoginScreen');
   };
   return (
-    <View>
+    <Container>
       <TextApp>Configs</TextApp>
-      <Button title="Logout" onPress={handleLogout} />
-    </View>
+      <LogoutButton onPress={handleLogout}>
+        <TextApp>Logout</TextApp>
+      </LogoutButton>
+    </Container>
   );
 };

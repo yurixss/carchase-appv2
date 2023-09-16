@@ -7,8 +7,10 @@ import React from 'react';
 import CarBrandsList from '../../components/home/BrandCard';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../routes';
+import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
 export default function Home() {
+  const [brands, setBrands] = useState([]);
   const [cars, setCars] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const navigation = useNavigation<NavigationProp<RootStackParamList, 'CarDetails'>>();
@@ -21,30 +23,39 @@ export default function Home() {
     navigation.navigate('CarDetails', { carId });
   };
 
-  const brands = [
+  async function getBrands() {
+    try {
+      const response = await api.get('brands/index');
+      setBrands(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const brandsXumbada = [
     {
       id: '1',
-      logoUri: require('/Users/yurixss/carchase-appv2/assets/logo-porsche.jpeg'),
+      logo: require('/Users/yurixss/carchase-appv2/assets/logo-porsche.jpeg'),
     },
     {
       id: '2',
-      logoUri: require('/Users/yurixss/carchase-appv2/assets/lambo-logo.jpeg'),
+      logo: require('/Users/yurixss/carchase-appv2/assets/lambo-logo.jpeg'),
     },
     {
       id: '3',
-      logoUri: require('/Users/yurixss/carchase-appv2/assets/ferrari-logo.jpeg'),
+      logo: require('/Users/yurixss/carchase-appv2/assets/ferrari-logo.jpeg'),
     },
     {
       id: '4',
-      logoUri: require('/Users/yurixss/carchase-appv2/assets/logo-pegeout.jpeg'),
+      logo: require('/Users/yurixss/carchase-appv2/assets/logo-pegeout.jpeg'),
     },
     {
       id: '4',
-      logoUri: require('/Users/yurixss/carchase-appv2/assets/bmw-logo.jpeg'),
+      logo: require('/Users/yurixss/carchase-appv2/assets/bmw-logo.jpeg'),
     },
     {
       id: '4',
-      logoUri: require('/Users/yurixss/carchase-appv2/assets/logo-audi.jpeg'),
+      logo: require('/Users/yurixss/carchase-appv2/assets/logo-audi.jpeg'),
     },
   ];
 
@@ -61,13 +72,21 @@ export default function Home() {
   }
 
   useEffect(() => {
-    getCars();
+    try {
+      Promise.allSettled([getCars(), getBrands()]);
+    } catch {
+      Toast.show({
+        type: 'error',
+        text1: 'Erro ao carregar os carros',
+        text2: 'Tente novamente',
+      });
+    }
   }, []);
 
   return (
     <>
       <Header setSearchCar={setSearchCar} />
-      <CarBrandsList brands={brands} />
+      <CarBrandsList brands={brandsXumbada} />
       <FlatList
         data={filteredCars}
         renderItem={({ item }) => <CarCard onPress={() => handleCardPress(item.id)} {...item} />}
