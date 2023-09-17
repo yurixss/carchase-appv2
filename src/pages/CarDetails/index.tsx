@@ -2,7 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { api } from '../../services/api';
 import { Car } from '../../types';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { Button, Container, Details, DetailsContainer, Name } from './styles';
+import {
+  BackButton,
+  ButtonText,
+  ConfirmButton,
+  Container,
+  Details,
+  DetailsContainer,
+  Name,
+  NextButton,
+  Row,
+} from './styles';
 import Reanimated, { SlideInUp } from 'react-native-reanimated';
 import { RootStackParamList } from '../../routes';
 import { CarCardProps } from '../../components/home/CarCard';
@@ -33,12 +43,14 @@ export const CarDetails = ({ route, image }: CarCardProps) => {
 
   return (
     <Container>
-      <Button title="Return" onPress={() => navigation.navigate('Home')} color={'black'} />
+      <BackButton title="Return" onPress={() => navigation.navigate('Home')} color={'black'}>
+        <ButtonText>Return</ButtonText>
+      </BackButton>
 
       <Reanimated.Image
         key={image}
         entering={SlideInUp.duration(500)}
-        source={image ? { uri: image } : defaultImage}
+        source={defaultImage}
         style={{
           width: '100%',
           height: 200,
@@ -56,6 +68,15 @@ export const CarDetails = ({ route, image }: CarCardProps) => {
         <Details>Price: ${car?.price}</Details>
         <Details>Descrição: ${car?.description}</Details>
       </DetailsContainer>
+
+      <Row>
+        <ConfirmButton>
+          <ButtonText>Falar com o vendedor</ButtonText>
+        </ConfirmButton>
+        <NextButton>
+          <ButtonText>Salvar para depois</ButtonText>
+        </NextButton>
+      </Row>
     </Container>
   );
 };

@@ -10,10 +10,5 @@ export const Container = styled.View`
   margin: 10px;
   border-radius: 30px;
   background-color: #fff;
-  margin-bottom: 50px;
-`;
-
-export const Logo = styled.Image`
-  width: 55px;
-  height: 55px;
+  margin-bottom: 40px;
 `;

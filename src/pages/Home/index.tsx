@@ -93,7 +93,7 @@ export default function Home() {
       <FlatList
         data={filteredCars}
         renderItem={({ item }) => <CarCard onPress={() => handleCardPress(item.id)} {...item} />}
-        keyExtractor={(car) => car.id.toString()}
+        keyExtractor={(car) => car.id}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={getCars} />}
       />
     </>
