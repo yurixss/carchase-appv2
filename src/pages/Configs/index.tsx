@@ -1,6 +1,7 @@
 import React from 'react';
 import TextApp from '../../components/pattern/TextApp';
-import { Container, LogoutButton } from './styles';
+import { Body, Container, LogoutButton, Title } from './styles';
+import { SimpleCard } from '../../components/shared/SimpleCard';
 
 export const Configs = ({ navigation }) => {
   const handleLogout = () => {
@@ -8,7 +9,12 @@ export const Configs = ({ navigation }) => {
   };
   return (
     <Container>
-      <TextApp>Configs</TextApp>
+      <Title>Configurações Gerais</Title>
+      <Body>
+        <SimpleCard title="Configurações do Usuário" />
+        <SimpleCard title="Ver/Editar seus Ánuncios" />
+        <SimpleCard title="Ánuncios Salvos" />
+      </Body>
       <LogoutButton onPress={handleLogout}>
         <TextApp>Logout</TextApp>
       </LogoutButton>

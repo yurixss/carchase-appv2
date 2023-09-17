@@ -23,13 +23,13 @@ const SimpleSearch: React.FC<SimpleSearchProps> = ({ onSearch }) => {
 
   return (
     <Container>
-      <Feather name="search" size={24} color="#657a38" />
+      <Feather name="search" size={20} color="black" />
 
       <SearchInput placeholder="Search" onChangeText={handleSearchTextChange} value={searchText} />
 
       {searchText.length > 0 && (
         <ClearButton onPress={clearSearch}>
-          <MaterialIcons name="clear" size={16} color="#657a38" />
+          <MaterialIcons name="clear" size={16} color="black" />
         </ClearButton>
       )}
     </Container>

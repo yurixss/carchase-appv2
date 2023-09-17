@@ -1,24 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../../services/api';
 import { Car } from '../../types';
-import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Button, Container, Details, DetailsContainer, Name } from './styles';
 import Reanimated, { SlideInUp } from 'react-native-reanimated';
+import { RootStackParamList } from '../../routes';
+import { CarCardProps } from '../../components/home/CarCard';
 
-interface CarDetailsProps {
-  route: {
-    params: {
-      carId: string;
-    };
-  };
-  image: string;
-}
-
-export const CarDetails: React.FC<CarDetailsProps> = ({ route, image }) => {
+export const CarDetails = ({ route, image }: CarCardProps) => {
   const carId = route?.params?.carId;
   const [car, setCar] = useState<Car | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParamList, 'Home'>>();
   const defaultImage = require('/Users/yurixss/carchase-appv2/assets/aventador.jpeg');
 
   // função para buscar os dados do carro
@@ -40,11 +33,7 @@ export const CarDetails: React.FC<CarDetailsProps> = ({ route, image }) => {
 
   return (
     <Container>
-      <Button
-        title="Return"
-        onPress={() => navigation.navigate('HomeTabs', { screen: 'Home' })}
-        color={'black'}
-      />
+      <Button title="Return" onPress={() => navigation.navigate('Home')} color={'black'} />
 
       <Reanimated.Image
         key={image}
@@ -65,6 +54,7 @@ export const CarDetails: React.FC<CarDetailsProps> = ({ route, image }) => {
         <Details>Color: {car?.color}</Details>
         <Details>Year: {car?.year}</Details>
         <Details>Price: ${car?.price}</Details>
+        <Details>Descrição: ${car?.description}</Details>
       </DetailsContainer>
     </Container>
   );

@@ -8,13 +8,13 @@ export default function Header({ setSearchCar }): JSX.Element {
     <Container>
       <Content>
         <ButtonUser>
-          <Feather name="user" size={28} color="#657a38" />
+          <Feather name="user" size={28} color="black" />
         </ButtonUser>
 
         <SimpleSearch onSearch={(value) => setSearchCar(value)} />
 
         <ButtonUser>
-          <Feather name="shopping-bag" size={28} color="#657a38" />
+          <Feather name="shopping-bag" size={28} color="black" />
         </ButtonUser>
       </Content>
     </Container>

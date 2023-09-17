@@ -1,9 +1,12 @@
 import styled from 'styled-components/native';
-import { screenPadding } from '../../utils';
+import H1 from '../../components/pattern/H1';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  padding: 0 ${screenPadding}px;
+`;
+
+export const Body = styled.ScrollView`
+  padding: 20px;
 `;
 
 export const LogoutButton = styled.TouchableOpacity`
@@ -16,4 +19,8 @@ export const LogoutButton = styled.TouchableOpacity`
   align-items: center;
   border-radius: 15px;
   background-color: #bdcdd0;
+`;
+
+export const Title = styled(H1)`
+  padding: 10px;
 `;

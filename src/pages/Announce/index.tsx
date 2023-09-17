@@ -31,6 +31,9 @@ type DataForm = {
   price: string;
   km: string;
   description: string;
+  status: string;
+  photos: string[];
+  is_new: boolean;
 };
 
 export default function Announce(): JSX.Element {
@@ -138,6 +141,13 @@ export default function Announce(): JSX.Element {
 
           <ControlledTextInput
             control={control}
+            label="Placa"
+            name="name"
+            rules={{ required: true }}
+          />
+
+          <ControlledTextInput
+            control={control}
             label="Marca ou empresa"
             name="model"
             rules={{ required: true }}
@@ -226,7 +236,13 @@ export default function Announce(): JSX.Element {
         <Body>
           <ControlledTextInput
             control={control}
-            label="Possui sinistro?"
+            label="Descreva seu carro, o que ele tem de especial?"
+            name="description"
+            rules={{ required: true }}
+          />
+          <ControlledTextInput
+            control={control}
+            label="Usado ou novo?"
             name="price"
             rules={{ required: true }}
           />
@@ -238,19 +254,13 @@ export default function Announce(): JSX.Element {
           />
           <ControlledTextInput
             control={control}
-            label="Possui débitos?"
-            name="price"
-            rules={{ required: true }}
-          />
-          <ControlledTextInput
-            control={control}
             label="Possui riscos?"
             name="price"
             rules={{ required: true }}
           />
           <ControlledTextInput
             control={control}
-            label="Possui batidas?"
+            label="Possui sinistros?"
             name="price"
             rules={{ required: true }}
           />

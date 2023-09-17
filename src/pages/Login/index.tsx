@@ -1,6 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { View, Button } from 'react-native';
 import {
   Container,
   InputContainer,
@@ -12,7 +10,6 @@ import {
 } from './styles';
 
 export default function Login({ navigation }) {
-  // const navigation = useNavigation();
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const defaultImage = require('/Users/yurixss/carchase-appv2/assets/login2.jpeg');

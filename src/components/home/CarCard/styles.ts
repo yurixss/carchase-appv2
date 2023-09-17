@@ -21,13 +21,13 @@ export const styles = StyleSheet.create({
   },
   nameContainer: {
     backgroundColor: 'white',
-    borderRadius: 20,
+    borderRadius: 10,
     padding: 5,
   },
   priceContainer: {
     backgroundColor: 'white',
-    borderRadius: 20,
-    marginTop: 10,
+    borderRadius: 10,
+    marginTop: 5,
     padding: 5,
   },
   price: {

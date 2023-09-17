@@ -46,7 +46,6 @@ function BottomTabNavigator(): JSX.Element {
     setTabBarOpacity(1.0);
   };
 
-  console.log(tabBarOpacity);
   return (
     <Tab.Navigator
       screenOptions={{
@@ -117,7 +116,7 @@ function BottomTabNavigator(): JSX.Element {
         }}
       />
       <Tab.Screen
-        name="Search"
+        name="Configs"
         component={Configs}
         options={{
           tabBarIcon: ({ size, color, focused }) => {

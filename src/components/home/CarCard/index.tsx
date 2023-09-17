@@ -13,6 +13,12 @@ export type CarCardProps = {
   km: number;
   image: string;
   onPress: () => void;
+
+  route: {
+    params: {
+      carId: string;
+    };
+  };
 };
 
 const CarCard = ({ image, name, price, onPress }: CarCardProps) => {
