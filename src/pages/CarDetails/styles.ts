@@ -33,6 +33,7 @@ export const PriceContainer = styled.View`
   max-width: 120px;
   background-color: #36db18;
   border-radius: 25px;
+  padding: 8px;
 `;
 
 export const Price = styled.Text`
@@ -40,10 +41,33 @@ export const Price = styled.Text`
   font-weight: bold;
   color: black;
   align-self: center;
-  margin-top: 12px;
+  margin-top: 5px;
 `;
 
-export const DetailsContainer = styled.View`
+export const RowCards = styled.View`
+  flex-direction: row;
+  margin-top: 20px;
+  gap: 10px;
+  flex-wrap: wrap;
+`;
+
+export const CardContainer = styled.View`
+  height: 40px;
+  min-width: 80px;
+  background-color: #f5f5f5;
+  border-radius: 25px;
+  padding: 8px;
+`;
+
+export const ColorText = styled.Text`
+  font-size: 12px;
+  font-weight: bold;
+  color: black;
+  align-self: center;
+  margin-top: 5px;
+`;
+
+export const DetailsContainer = styled.ScrollView`
   flex: 1;
   background-color: #fff;
   padding: 16px;
@@ -52,7 +76,7 @@ export const DetailsContainer = styled.View`
 `;
 
 export const Details = styled.Text`
-  font-size: 16px;
+  font-size: 14px;
   padding: 5px 0;
 `;
 
@@ -65,10 +89,9 @@ export const ButtonContainer = styled.View`
 `;
 
 export const BackButton = styled.TouchableOpacity`
-  background-color: orange;
+  background-color: black;
   padding: 8px;
   border-radius: 10px;
-  width: 60px;
 `;
 
 export const ConfirmButton = styled.TouchableOpacity`
@@ -90,4 +113,12 @@ export const ButtonText = styled.Text`
   color: #fff;
   font-weight: bold;
   text-align: center;
+`;
+
+export const Line = styled.View`
+  height: 1px;
+  background-color: #000;
+  opacity: 0.2;
+  width: 100%;
+  margin-top: 20px;
 `;

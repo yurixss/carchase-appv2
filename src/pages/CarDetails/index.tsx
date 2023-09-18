@@ -6,21 +6,26 @@ import {
   BackButton,
   ButtonContainer,
   ButtonText,
+  CardContainer,
+  ColorText,
   ConfirmButton,
   Container,
   Details,
   DetailsContainer,
   Header,
+  Line,
   Name,
   NameContainer,
   NextButton,
   Price,
   PriceContainer,
+  RowCards,
 } from './styles';
 import Reanimated, { SlideInUp } from 'react-native-reanimated';
 import { RootStackParamList } from '../../routes';
 import { CarCardProps } from '../../components/home/CarCard';
 import H1 from '../../components/pattern/H1';
+import { Ionicons } from '@expo/vector-icons';
 
 export const CarDetails = ({ route, image }: CarCardProps) => {
   const carId = route?.params?.carId;
@@ -35,7 +40,6 @@ export const CarDetails = ({ route, image }: CarCardProps) => {
     try {
       const response = await api.get(`cars/show/${carId}`);
       setCar(response.data);
-      console.warn(response.data);
     } catch (error) {
       console.error(error);
     } finally {
@@ -50,8 +54,13 @@ export const CarDetails = ({ route, image }: CarCardProps) => {
   return (
     <Container>
       <Header>
-        <BackButton title="Return" onPress={() => navigation.navigate('Home')} color={'black'}>
-          <ButtonText>Return</ButtonText>
+        <BackButton>
+          <Ionicons
+            name="arrow-back"
+            size={24}
+            color={'white'}
+            onPress={() => navigation.navigate('Home')}
+          />
         </BackButton>
         <H1>Detalhes do carro</H1>
       </Header>
@@ -71,15 +80,38 @@ export const CarDetails = ({ route, image }: CarCardProps) => {
         <NameContainer>
           <Name>{car?.name}</Name>
           <PriceContainer>
-            <Price>${car?.price}</Price>
+            <Price>R${car?.price}</Price>
           </PriceContainer>
         </NameContainer>
 
+        <Details>Localidade: São Paulo - Brasil</Details>
         <Details>Descrição: ${car?.description}</Details>
-        <Details>Brand: {car?.model}</Details>
-        <Details>KM: {car?.km}</Details>
-        <Details>Color: {car?.color}</Details>
-        <Details>Year: {car?.year}</Details>
+
+        <Line />
+
+        <RowCards>
+          <CardContainer>
+            <ColorText>Marca: {car?.model}</ColorText>
+          </CardContainer>
+
+          <CardContainer>
+            <ColorText>Cor: {car?.color}</ColorText>
+          </CardContainer>
+
+          <CardContainer>
+            <ColorText>{car?.km}</ColorText>
+          </CardContainer>
+
+          <CardContainer>
+            <ColorText>Ano: {car?.year}</ColorText>
+          </CardContainer>
+
+          <CardContainer>
+            <ColorText>Cambio: Manual</ColorText>
+          </CardContainer>
+        </RowCards>
+
+        <Line />
 
         <ButtonContainer>
           <ConfirmButton>
