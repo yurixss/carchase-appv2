@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 export const Container = styled.SafeAreaView`
   flex: 1;
   padding: 20px;
+  background-color: #fff9f4;
 `;
 
 export const Body = styled.View`
@@ -27,7 +28,7 @@ export const Title = styled.Text`
 export const StepContainer = styled.View`
   height: 30px;
   width: 30px;
-  background-color: orange;
+  background-color: white;
   border-radius: 15px;
 `;
 
@@ -43,10 +44,11 @@ export const ButtonContainer = styled.View`
   gap: 10px;
   margin-top: 20px;
   justify-content: space-around;
+  height: 50px;
 `;
 
 export const ClearButton = styled.TouchableOpacity`
-  background-color: red;
+  background-color: #d55d63;
   padding: 8px;
   border-radius: 10px;
   width: 150px;
@@ -54,7 +56,7 @@ export const ClearButton = styled.TouchableOpacity`
 `;
 
 export const BackButton = styled.TouchableOpacity`
-  background-color: orange;
+  background-color: #452d3d;
   padding: 8px;
   border-radius: 10px;
   width: 150px;
@@ -70,7 +72,7 @@ export const NextButton = styled.TouchableOpacity`
 `;
 
 export const ConfirmButton = styled.TouchableOpacity`
-  background-color: #657a38;
+  background-color: #548c82;
   padding: 16px;
   border-radius: 15px;
   width: 90%;

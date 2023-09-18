@@ -8,6 +8,7 @@ import CarBrandsList from '../../components/home/BrandCard';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../routes';
 import { Toast } from 'react-native-toast-message/lib/src/Toast';
+import { Container } from './styles';
 
 export default function Home() {
   const [brands, setBrands] = useState([]);
@@ -87,7 +88,7 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <Container>
       <Header setSearchCar={setSearchCar} />
       <CarBrandsList brands={brandsXumbada} />
       <FlatList
@@ -96,6 +97,6 @@ export default function Home() {
         keyExtractor={(car) => car.id}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={getCars} />}
       />
-    </>
+    </Container>
   );
 }

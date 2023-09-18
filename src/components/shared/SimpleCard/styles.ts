@@ -14,7 +14,7 @@ export const Container = styled.TouchableOpacity`
 `;
 
 export const Text = styled.Text`
-  color: #657a38;
+  color: #143c41;
   font-size: 15px;
   font-weight: bold;
   align-self: center;

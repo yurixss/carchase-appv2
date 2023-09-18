@@ -9,6 +9,6 @@ export const Container = styled.View`
   align-items: center;
   margin: 10px;
   border-radius: 30px;
-  background-color: #fff;
+  background-color: white;
   margin-bottom: 40px;
 `;

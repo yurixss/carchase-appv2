@@ -4,18 +4,23 @@ import { Car } from '../../types';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import {
   BackButton,
+  ButtonContainer,
   ButtonText,
   ConfirmButton,
   Container,
   Details,
   DetailsContainer,
+  Header,
   Name,
+  NameContainer,
   NextButton,
-  Row,
+  Price,
+  PriceContainer,
 } from './styles';
 import Reanimated, { SlideInUp } from 'react-native-reanimated';
 import { RootStackParamList } from '../../routes';
 import { CarCardProps } from '../../components/home/CarCard';
+import H1 from '../../components/pattern/H1';
 
 export const CarDetails = ({ route, image }: CarCardProps) => {
   const carId = route?.params?.carId;
@@ -30,6 +35,7 @@ export const CarDetails = ({ route, image }: CarCardProps) => {
     try {
       const response = await api.get(`cars/show/${carId}`);
       setCar(response.data);
+      console.warn(response.data);
     } catch (error) {
       console.error(error);
     } finally {
@@ -43,40 +49,47 @@ export const CarDetails = ({ route, image }: CarCardProps) => {
 
   return (
     <Container>
-      <BackButton title="Return" onPress={() => navigation.navigate('Home')} color={'black'}>
-        <ButtonText>Return</ButtonText>
-      </BackButton>
+      <Header>
+        <BackButton title="Return" onPress={() => navigation.navigate('Home')} color={'black'}>
+          <ButtonText>Return</ButtonText>
+        </BackButton>
+        <H1>Detalhes do carro</H1>
+      </Header>
 
       <Reanimated.Image
         key={image}
-        entering={SlideInUp.duration(500)}
-        source={defaultImage}
+        entering={SlideInUp.duration(350)}
+        source={car?.image ? { uri: car?.image } : defaultImage}
         style={{
           width: '100%',
-          height: 200,
-          resizeMode: 'cover',
-          borderRadius: 20,
+          height: 300,
+          borderRadius: 30,
         }}
       />
 
       <DetailsContainer>
-        <Name>{car?.name}</Name>
+        <NameContainer>
+          <Name>{car?.name}</Name>
+          <PriceContainer>
+            <Price>${car?.price}</Price>
+          </PriceContainer>
+        </NameContainer>
+
+        <Details>Descrição: ${car?.description}</Details>
         <Details>Brand: {car?.model}</Details>
         <Details>KM: {car?.km}</Details>
         <Details>Color: {car?.color}</Details>
         <Details>Year: {car?.year}</Details>
-        <Details>Price: ${car?.price}</Details>
-        <Details>Descrição: ${car?.description}</Details>
-      </DetailsContainer>
 
-      <Row>
-        <ConfirmButton>
-          <ButtonText>Falar com o vendedor</ButtonText>
-        </ConfirmButton>
-        <NextButton>
-          <ButtonText>Salvar para depois</ButtonText>
-        </NextButton>
-      </Row>
+        <ButtonContainer>
+          <ConfirmButton>
+            <ButtonText>Negociar agora</ButtonText>
+          </ConfirmButton>
+          <NextButton>
+            <ButtonText>Salvar ánuncio</ButtonText>
+          </NextButton>
+        </ButtonContainer>
+      </DetailsContainer>
     </Container>
   );
 };
