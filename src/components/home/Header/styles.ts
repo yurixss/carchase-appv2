@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { theme } from '../../../theme';
 
 export const Container = styled.SafeAreaView`
   flex-direction: row;
@@ -20,5 +21,5 @@ export const ButtonUser = styled.TouchableOpacity`
   height: 44px;
   justify-content: center;
   align-items: center;
-  border-radius: 44px;
+  border-radius: ${theme.borderRadius.xl};
 `;

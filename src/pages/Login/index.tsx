@@ -5,6 +5,7 @@ import {
   LoginButton,
   LoginButtonText,
   Logo,
+  RegisterButton,
   TextInput,
   Title,
 } from './styles';
@@ -31,8 +32,11 @@ export default function Login({ navigation }) {
           secureTextEntry
         />
         <LoginButton title="Login" onPress={handleLogin}>
-          <LoginButtonText>Entrar</LoginButtonText>
+          <LoginButtonText>Login</LoginButtonText>
         </LoginButton>
+        <RegisterButton title="Login" onPress={handleLogin}>
+          <LoginButtonText>Realizar Cadastro</LoginButtonText>
+        </RegisterButton>
       </InputContainer>
     </Container>
   );

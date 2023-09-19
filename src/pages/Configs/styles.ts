@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import H1 from '../../components/pattern/H1';
+import { theme } from '../../theme';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
@@ -16,7 +17,7 @@ export const Header = styled.View`
 `;
 
 export const ProfileImage = styled.Image`
-  border-radius: 500px;
+  border-radius: ${theme.borderRadius.circular};
   height: 120px;
   width: 120px;
   align-self: center;
@@ -31,15 +32,21 @@ export const Text = styled.Text`
 `;
 
 export const LogoutButton = styled.TouchableOpacity`
-  margin-top: auto;
+  border-radius: ${theme.borderRadius.md};
+  background-color: ${theme.colors.secondary};
   align-self: center;
   margin-bottom: 50px;
   padding: 10px;
-  width: 130px;
+  width: 120px;
   justify-content: center;
   align-items: center;
-  border-radius: 20px;
-  background-color: #bdcdd0;
+`;
+
+export const ButtonText = styled.Text`
+  color: ${theme.colors.neutralWhite};
+  font-size: 15px;
+  font-weight: bold;
+  align-self: center;
 `;
 
 export const Title = styled(H1)``;

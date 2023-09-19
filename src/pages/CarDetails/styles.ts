@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 import TextApp from '../../components/pattern/TextApp';
 import { screenHeight } from '../../utils';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { theme } from '../../theme';
 
 export const Container = styled.View`
   flex: 1;
@@ -31,8 +32,8 @@ export const PriceContainer = styled.View`
   height: 40px;
   min-width: 85px;
   max-width: 120px;
-  background-color: #36db18;
-  border-radius: 25px;
+  background-color: ${theme.colors.success};
+  border-radius: ${theme.borderRadius.xl};
   padding: 8px;
 `;
 
@@ -54,8 +55,8 @@ export const RowCards = styled.View`
 export const CardContainer = styled.View`
   height: 40px;
   min-width: 80px;
-  background-color: #f5f5f5;
-  border-radius: 25px;
+  background-color: ${theme.colors.background_details};
+  border-radius: ${theme.borderRadius.lg};
   padding: 8px;
 `;
 
@@ -72,7 +73,7 @@ export const DetailsContainer = styled.ScrollView`
   background-color: #fff;
   padding: 16px;
   margin-top: 20px;
-  border-radius: 30px;
+  border-radius: ${theme.borderRadius.xl};
 `;
 
 export const Details = styled.Text`
@@ -91,20 +92,20 @@ export const ButtonContainer = styled.View`
 export const BackButton = styled.TouchableOpacity`
   background-color: white;
   padding: 8px;
-  border-radius: 10px;
+  border-radius: ${theme.borderRadius.md};
 `;
 
 export const ConfirmButton = styled.TouchableOpacity`
-  background-color: #36db18;
+  background-color: ${theme.colors.success};
   padding: 24px;
-  border-radius: 30px;
+  border-radius: ${theme.borderRadius.xl};
   width: 49%;
 `;
 
 export const NextButton = styled.TouchableOpacity`
-  background-color: orange;
+  background-color: ${theme.colors.neutralOrange};
   padding: 24px;
-  border-radius: 30px;
+  border-radius: ${theme.borderRadius.xl};
   width: 49%;
 `;
 

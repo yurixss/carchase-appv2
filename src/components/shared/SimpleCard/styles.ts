@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { theme } from '../../../theme';
 
 export const Container = styled.TouchableOpacity`
   flex-direction: row;
@@ -9,7 +10,7 @@ export const Container = styled.TouchableOpacity`
   align-self: center;
   padding: 15px;
   background-color: #fff;
-  border-radius: 20px;
+  border-radius: ${theme.borderRadius.lg};
   margin-bottom: 10px;
 `;
 

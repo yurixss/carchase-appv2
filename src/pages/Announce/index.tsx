@@ -15,8 +15,6 @@ import {
   StepContainer,
   Title,
   StepNumber,
-  NoButton,
-  YesButton,
 } from './styles';
 import { CarImagePicker } from '../../components/shared/ImagePicker';
 import { ControlledTextInput } from '../../components/shared/ControlledTextInput';
@@ -41,7 +39,7 @@ type DataForm = {
 export default function Announce(): JSX.Element {
   const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation<NavigationProp<RootStackParamList, 'Home'>>();
-  const [step, setStep] = useState<'initial' | 'details' | 'photos' | 'review'>('initial');
+  const [step, setStep] = useState<'details' | 'photos' | 'review'>('details');
   const {
     register,
     setValue,
@@ -72,7 +70,7 @@ export default function Announce(): JSX.Element {
           text1: 'Carro anunciado com sucesso!',
           text2: 'Seu anúncio já está disponível para visualização.',
         });
-        setStep('initial');
+        setStep('details');
         reset();
         navigation.navigate('Home');
       })
@@ -88,29 +86,29 @@ export default function Announce(): JSX.Element {
     reset();
   };
 
-  //step 1
-  const initial = () => {
-    return (
-      <>
-        <Header>
-          <StepContainer>
-            <Ionicons name="car-outline" size={29} color="white" />
-          </StepContainer>
-          <Title>Deseja anunciar seu veículo?</Title>
-        </Header>
+  // //step 1
+  // const initial = () => {
+  //   return (
+  //     <>
+  //       <Header>
+  //         <StepContainer>
+  //           <Ionicons name="car-outline" size={29} color="white" />
+  //         </StepContainer>
+  //         <Title>Deseja anunciar seu veículo?</Title>
+  //       </Header>
 
-        <ButtonContainer>
-          <NoButton onPress={() => navigation.navigate('Home')}>
-            <ButtonText>Não</ButtonText>
-          </NoButton>
+  //       <ButtonContainer>
+  //         <NoButton onPress={() => navigation.navigate('Home')}>
+  //           <ButtonText>Não</ButtonText>
+  //         </NoButton>
 
-          <YesButton onPress={() => setStep('details')}>
-            <ButtonText>Sim</ButtonText>
-          </YesButton>
-        </ButtonContainer>
-      </>
-    );
-  };
+  //         <YesButton onPress={() => setStep('details')}>
+  //           <ButtonText>Sim</ButtonText>
+  //         </YesButton>
+  //       </ButtonContainer>
+  //     </>
+  //   );
+  // };
 
   //step 2
   const details = () => {
@@ -118,11 +116,11 @@ export default function Announce(): JSX.Element {
       <>
         <ButtonContainer>
           <ClearButton onPress={onReset}>
-            <ButtonText>Limpar Dados</ButtonText>
+            <ButtonText>Limpar</ButtonText>
           </ClearButton>
 
           <NextButton title="Próximo passo" onPress={() => setStep('photos')}>
-            <ButtonText>Próximo passo</ButtonText>
+            <ButtonText>Próximo</ButtonText>
           </NextButton>
         </ButtonContainer>
 
@@ -198,7 +196,7 @@ export default function Announce(): JSX.Element {
             <ButtonText>Voltar</ButtonText>
           </BackButton>
           <NextButton onPress={() => setStep('review')}>
-            <ButtonText>Próximo passo</ButtonText>
+            <ButtonText>Próximo</ButtonText>
           </NextButton>
         </ButtonContainer>
 
@@ -224,7 +222,7 @@ export default function Announce(): JSX.Element {
           </BackButton>
 
           <ClearButton onPress={onReset}>
-            <ButtonText>Limpar Dados</ButtonText>
+            <ButtonText>Limpar</ButtonText>
           </ClearButton>
         </ButtonContainer>
 
@@ -276,7 +274,6 @@ export default function Announce(): JSX.Element {
   };
 
   const stack = {
-    initial,
     details,
     photos,
     review,

@@ -1,9 +1,10 @@
 import styled from 'styled-components/native';
+import { theme } from '../../../theme';
 
 export const Container = styled.View`
   flex-direction: row;
   background-color: #bdcdd0;
-  border-radius: 20px;
+  border-radius: ${theme.borderRadius.lg};
   padding-horizontal: 8px;
   margin: 10px;
   min-height: 40px;

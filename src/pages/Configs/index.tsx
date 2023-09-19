@@ -1,6 +1,15 @@
 import React from 'react';
 import TextApp from '../../components/pattern/TextApp';
-import { Body, Container, Header, LogoutButton, ProfileImage, Title, Text } from './styles';
+import {
+  Body,
+  Container,
+  Header,
+  LogoutButton,
+  ProfileImage,
+  Title,
+  Text,
+  ButtonText,
+} from './styles';
 import { SimpleCard } from '../../components/shared/SimpleCard';
 
 export const Configs = ({ navigation }) => {
@@ -23,7 +32,7 @@ export const Configs = ({ navigation }) => {
         <SimpleCard title="Sei lá oq" />
       </Body>
       <LogoutButton onPress={handleLogout}>
-        <TextApp>Logout</TextApp>
+        <ButtonText>Logout</ButtonText>
       </LogoutButton>
     </Container>
   );

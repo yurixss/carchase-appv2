@@ -1,5 +1,6 @@
 import { Dimensions } from 'react-native';
 import styled from 'styled-components/native';
+import { theme } from '../../../theme';
 
 export const Container = styled.View`
   flex: 1;
@@ -8,7 +9,7 @@ export const Container = styled.View`
   justify-content: center;
   align-items: center;
   margin: 10px;
-  border-radius: 30px;
+  border-radius: ${theme.borderRadius.lg};
   background-color: white;
   margin-bottom: 40px;
 `;
