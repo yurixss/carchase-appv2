@@ -29,7 +29,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 export const CarDetails = ({ route, image }: CarCardProps) => {
   const carId = route?.params?.carId;
-  const [car, setCar] = useState<Car | null>(null);
+  const [car, setCar] = useState<Car>();
   const [isLoading, setIsLoading] = useState(true);
   const navigation = useNavigation<NavigationProp<RootStackParamList, 'Home'>>();
   const defaultImage = require('/Users/yurixss/carchase-appv2/assets/aventador.jpeg');
@@ -58,7 +58,7 @@ export const CarDetails = ({ route, image }: CarCardProps) => {
           <Ionicons
             name="arrow-back"
             size={24}
-            color={'white'}
+            color={'black'}
             onPress={() => navigation.navigate('Home')}
           />
         </BackButton>

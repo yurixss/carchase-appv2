@@ -12,7 +12,7 @@ import {
 export default function Login({ navigation }) {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const defaultImage = require('/Users/yurixss/carchase-appv2/assets/login2.jpeg');
+  const defaultImage = require('/Users/yurixss/carchase-appv2/assets/login.jpeg');
 
   const handleLogin = () => {
     navigation.navigate('HomeTabs', { screen: 'Home' });

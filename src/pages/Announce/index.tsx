@@ -15,6 +15,8 @@ import {
   StepContainer,
   Title,
   StepNumber,
+  NoButton,
+  YesButton,
 } from './styles';
 import { CarImagePicker } from '../../components/shared/ImagePicker';
 import { ControlledTextInput } from '../../components/shared/ControlledTextInput';
@@ -98,13 +100,13 @@ export default function Announce(): JSX.Element {
         </Header>
 
         <ButtonContainer>
-          <ClearButton onPress={() => navigation.navigate('Home')}>
+          <NoButton onPress={() => navigation.navigate('Home')}>
             <ButtonText>Não</ButtonText>
-          </ClearButton>
+          </NoButton>
 
-          <NextButton onPress={() => setStep('details')}>
+          <YesButton onPress={() => setStep('details')}>
             <ButtonText>Sim</ButtonText>
-          </NextButton>
+          </YesButton>
         </ButtonContainer>
       </>
     );

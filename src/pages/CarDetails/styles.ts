@@ -89,13 +89,13 @@ export const ButtonContainer = styled.View`
 `;
 
 export const BackButton = styled.TouchableOpacity`
-  background-color: black;
+  background-color: white;
   padding: 8px;
   border-radius: 10px;
 `;
 
 export const ConfirmButton = styled.TouchableOpacity`
-  background-color: #657a38;
+  background-color: #36db18;
   padding: 24px;
   border-radius: 30px;
   width: 49%;
@@ -110,7 +110,7 @@ export const NextButton = styled.TouchableOpacity`
 
 export const ButtonText = styled.Text`
   font-size: 12px;
-  color: #fff;
+  color: black;
   font-weight: bold;
   text-align: center;
 `;

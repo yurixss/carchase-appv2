@@ -9,6 +9,7 @@ import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../routes';
 import { Toast } from 'react-native-toast-message/lib/src/Toast';
 import { Container } from './styles';
+import H1 from '../../components/pattern/H1';
 
 export default function Home() {
   const [brands, setBrands] = useState([]);
@@ -95,6 +96,10 @@ export default function Home() {
         data={filteredCars}
         renderItem={({ item }) => <CarCard onPress={() => handleCardPress(item.id)} {...item} />}
         keyExtractor={(car) => car.id}
+        ListEmptyComponent={
+          //TODO - Create a component for this
+          <H1 style={{ textAlign: 'center', marginTop: 20 }}>Nenhum carro encontrado</H1>
+        }
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={getCars} />}
       />
     </Container>

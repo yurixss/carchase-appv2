@@ -85,3 +85,24 @@ export const ButtonText = styled.Text`
   font-weight: bold;
   text-align: center;
 `;
+
+export const YesButton = styled.TouchableOpacity`
+  background-color: #36db18;
+  padding: 24px;
+  border-radius: 30px;
+  width: 49%;
+`;
+
+export const NoButton = styled.TouchableOpacity`
+  background-color: orange;
+  padding: 24px;
+  border-radius: 30px;
+  width: 49%;
+`;
+
+export const ButtonText2 = styled.Text`
+  font-size: 12px;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+`;
