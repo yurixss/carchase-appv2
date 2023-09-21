@@ -26,6 +26,7 @@ import { RootStackParamList } from '../../routes';
 import { CarCardProps } from '../../components/home/CarCard';
 import H1 from '../../components/pattern/H1';
 import { Ionicons } from '@expo/vector-icons';
+import { ConfirmModalProps } from '../../components/shared/Modal';
 
 export const CarDetails = ({ route, image }: CarCardProps) => {
   const carId = route?.params?.carId;
@@ -33,6 +34,7 @@ export const CarDetails = ({ route, image }: CarCardProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const navigation = useNavigation<NavigationProp<RootStackParamList, 'Home'>>();
   const defaultImage = require('/Users/yurixss/carchase-appv2/assets/aventador.jpeg');
+  const [modal, setModal] = useState<ConfirmModalProps>({} as ConfirmModalProps);
 
   // função para buscar os dados do carro
   async function getCar() {
@@ -84,7 +86,7 @@ export const CarDetails = ({ route, image }: CarCardProps) => {
           </PriceContainer>
         </NameContainer>
 
-        <Details>Localidade: São Paulo - Brasil</Details>
+        <Details>Local: São Paulo / SP</Details>
         <Details>Descrição: ${car?.description}</Details>
 
         <Line />

@@ -217,13 +217,13 @@ export default function Announce(): JSX.Element {
     return (
       <>
         <ButtonContainer>
-          <BackButton onPress={() => setStep('photos')}>
-            <ButtonText>Voltar</ButtonText>
-          </BackButton>
-
           <ClearButton onPress={onReset}>
             <ButtonText>Limpar</ButtonText>
           </ClearButton>
+
+          <BackButton onPress={() => setStep('photos')}>
+            <ButtonText>Voltar</ButtonText>
+          </BackButton>
         </ButtonContainer>
 
         <Header>
