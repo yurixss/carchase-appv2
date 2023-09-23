@@ -55,12 +55,12 @@ export const CarImagePicker = () => {
       {!image ? (
         <Button onPress={pickImage}>
           <Text>Selecionar Imagem</Text>
-          <Ionicons name="image-outline" size={34} color="white" />
+          <Ionicons name="image-outline" size={24} color="white" />
         </Button>
       ) : (
         <View>
           <Text>Imagem Selecionada</Text>
-          <Image source={{ uri: image }} style={{ width: 200, height: 150 }} />
+          <Image source={{ uri: image }} style={{ width: 150, height: 100 }} />
         </View>
       )}
       {isLoading && <Text>Loading...</Text>}

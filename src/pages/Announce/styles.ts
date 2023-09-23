@@ -13,10 +13,12 @@ export const Body = styled.View`
 
 export const Header = styled.View`
   flex-direction: row;
+  padding-top: 40px;
+  padding-left: 20px;
   height: 120px;
   gap: 16px;
   align-items: center;
-  background-color: orange;
+  background-color: ${theme.colors.neutralOrange};
 `;
 
 export const Title = styled.Text`
@@ -79,9 +81,11 @@ export const NextButton = styled.TouchableOpacity`
 
 export const ConfirmButton = styled.TouchableOpacity`
   background-color: ${theme.colors.success};
-  border-radius: ${theme.borderRadius.md};
-  width: 90%;
-  align-self: center;
+  border-radius: ${theme.borderRadius.sm};
+  width: 100%;
+  height: 50px;
+  margin-top: 16px;
+  justify-content: center;
 `;
 
 export const ButtonText = styled.Text`

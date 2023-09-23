@@ -88,31 +88,7 @@ export default function Announce(): JSX.Element {
     reset();
   };
 
-  // //step 1
-  // const initial = () => {
-  //   return (
-  //     <>
-  //       <Header>
-  //         <StepContainer>
-  //           <Ionicons name="car-outline" size={29} color="white" />
-  //         </StepContainer>
-  //         <Title>Deseja anunciar seu veículo?</Title>
-  //       </Header>
-
-  //       <ButtonContainer>
-  //         <NoButton onPress={() => navigation.navigate('Home')}>
-  //           <ButtonText>Não</ButtonText>
-  //         </NoButton>
-
-  //         <YesButton onPress={() => setStep('details')}>
-  //           <ButtonText>Sim</ButtonText>
-  //         </YesButton>
-  //       </ButtonContainer>
-  //     </>
-  //   );
-  // };
-
-  //step 2
+  //step 1
   const details = () => {
     return (
       <>
@@ -131,7 +107,7 @@ export default function Announce(): JSX.Element {
 
         <Row>
           <StepContainer>
-            <StepNumber>1 de 4</StepNumber>
+            <StepNumber>1 de 3</StepNumber>
           </StepContainer>
           <Title>Detalhes do veículo</Title>
         </Row>
@@ -188,8 +164,6 @@ export default function Announce(): JSX.Element {
             rules={{ required: true }}
           />
 
-          <Switch />
-
           <NextButton title="Próximo passo" onPress={() => setStep('photos')}>
             <ButtonText>Próximo</ButtonText>
           </NextButton>
@@ -198,51 +172,64 @@ export default function Announce(): JSX.Element {
     );
   };
 
-  //step 3
+  //step 2
   const photos = () => {
     return (
       <>
-        <ButtonContainer>
-          <BackButton onPress={() => setStep('details')}>
-            <ButtonText>Voltar</ButtonText>
-          </BackButton>
-          <NextButton onPress={() => setStep('review')}>
-            <ButtonText>Próximo</ButtonText>
-          </NextButton>
-        </ButtonContainer>
-
         <Header>
-          <StepContainer>
-            <StepNumber>2</StepNumber>
-          </StepContainer>
-          <Title>Escolha as melhores fotos</Title>
+          <BackButton>
+            <Ionicons
+              name="arrow-back"
+              size={24}
+              color={'black'}
+              onPress={() => setStep('details')}
+            />
+          </BackButton>
+
+          <Title>Criar ánuncio</Title>
         </Header>
 
-        <CarImagePicker />
+        <Row>
+          <StepContainer>
+            <StepNumber>2 de 3</StepNumber>
+          </StepContainer>
+          <Title>Fotos do seu veículo</Title>
+        </Row>
+
+        <Body>
+          <CarImagePicker />
+
+          <NextButton title="Próximo passo" onPress={() => setStep('review')}>
+            <ButtonText>Próximo</ButtonText>
+          </NextButton>
+        </Body>
       </>
     );
   };
 
-  //step 4
+  //step 3
   const review = () => {
     return (
       <>
-        <ButtonContainer>
-          <ClearButton onPress={onReset}>
-            <ButtonText>Limpar</ButtonText>
-          </ClearButton>
-
-          <BackButton onPress={() => setStep('photos')}>
-            <ButtonText>Voltar</ButtonText>
-          </BackButton>
-        </ButtonContainer>
-
         <Header>
-          <StepContainer>
-            <StepNumber>3</StepNumber>
-          </StepContainer>
-          <Title>Detalhes Finais</Title>
+          <BackButton>
+            <Ionicons
+              name="arrow-back"
+              size={24}
+              color={'black'}
+              onPress={() => setStep('photos')}
+            />
+          </BackButton>
+
+          <Title>Criar ánuncio</Title>
         </Header>
+
+        <Row>
+          <StepContainer>
+            <StepNumber>2 de 3</StepNumber>
+          </StepContainer>
+          <Title>Fotos do seu veículo</Title>
+        </Row>
 
         <Body>
           <ControlledTextInput
@@ -275,11 +262,11 @@ export default function Announce(): JSX.Element {
             name="price"
             rules={{ required: true }}
           />
-        </Body>
 
-        <ConfirmButton onPress={handleSubmit(onSubmit)} disabled={isLoading}>
-          <ButtonText>Finalizar Ánuncio</ButtonText>
-        </ConfirmButton>
+          <ConfirmButton onPress={handleSubmit(onSubmit)} disabled={isLoading}>
+            <ButtonText>Finalizar Ánuncio</ButtonText>
+          </ConfirmButton>
+        </Body>
       </>
     );
   };
