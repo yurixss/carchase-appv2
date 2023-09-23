@@ -15,6 +15,7 @@ import {
   StepContainer,
   Title,
   StepNumber,
+  Row,
 } from './styles';
 import { CarImagePicker } from '../../components/shared/ImagePicker';
 import { ControlledTextInput } from '../../components/shared/ControlledTextInput';
@@ -22,6 +23,7 @@ import Toast from 'react-native-toast-message';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { RootStackParamList } from '../../routes';
+import { Switch } from 'react-native-gesture-handler';
 
 type DataForm = {
   name: string;
@@ -114,22 +116,25 @@ export default function Announce(): JSX.Element {
   const details = () => {
     return (
       <>
-        <ButtonContainer>
-          <ClearButton onPress={onReset}>
-            <ButtonText>Limpar</ButtonText>
-          </ClearButton>
-
-          <NextButton title="Próximo passo" onPress={() => setStep('photos')}>
-            <ButtonText>Próximo</ButtonText>
-          </NextButton>
-        </ButtonContainer>
-
         <Header>
-          <StepContainer>
-            <StepNumber>1</StepNumber>
-          </StepContainer>
-          <Title>Detalhes do seu veículo</Title>
+          <BackButton>
+            <Ionicons
+              name="arrow-back"
+              size={24}
+              color={'black'}
+              onPress={() => navigation.navigate('Home')}
+            />
+          </BackButton>
+
+          <Title>Criar ánuncio</Title>
         </Header>
+
+        <Row>
+          <StepContainer>
+            <StepNumber>1 de 4</StepNumber>
+          </StepContainer>
+          <Title>Detalhes do veículo</Title>
+        </Row>
 
         <Body>
           <ControlledTextInput
@@ -182,6 +187,12 @@ export default function Announce(): JSX.Element {
             name="price"
             rules={{ required: true }}
           />
+
+          <Switch />
+
+          <NextButton title="Próximo passo" onPress={() => setStep('photos')}>
+            <ButtonText>Próximo</ButtonText>
+          </NextButton>
         </Body>
       </>
     );

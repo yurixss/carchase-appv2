@@ -1,9 +1,8 @@
 import styled from 'styled-components/native';
 import { theme } from '../../theme';
 
-export const Container = styled.SafeAreaView`
+export const Container = styled.ScrollView`
   flex: 1;
-  padding: 20px;
   background-color: white;
 `;
 
@@ -14,10 +13,10 @@ export const Body = styled.View`
 
 export const Header = styled.View`
   flex-direction: row;
-  gap: 10px;
-  margin-top: 8px;
-  margin-left: 20px;
+  height: 120px;
+  gap: 16px;
   align-items: center;
+  background-color: orange;
 `;
 
 export const Title = styled.Text`
@@ -26,9 +25,14 @@ export const Title = styled.Text`
   color: black;
 `;
 
+export const Row = styled.View`
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 16px;
+  margin-top: 16px;
+`;
+
 export const StepContainer = styled.View`
-  height: 30px;
-  width: 30px;
   background-color: white;
   border-radius: ${theme.borderRadius.md};
 `;
@@ -36,7 +40,7 @@ export const StepContainer = styled.View`
 export const StepNumber = styled.Text`
   font-size: 15px;
   font-weight: bold;
-  align-self: center;
+  color: ${theme.colors.neutralOrange};
   margin-top: 5px;
 `;
 
@@ -59,24 +63,22 @@ export const ClearButton = styled.TouchableOpacity`
 `;
 
 export const BackButton = styled.TouchableOpacity`
-  background-color: ${theme.colors.neutralOrange};
-  border-radius: ${theme.borderRadius.md};
+  background-color: white;
   padding: 8px;
-  width: 48%;
-  align-self: center;
+  border-radius: ${theme.borderRadius.md};
 `;
 
 export const NextButton = styled.TouchableOpacity`
-  background-color: #657a38;
-  border-radius: ${theme.borderRadius.md};
-  padding: 8px;
-  width: 48%;
-  align-self: center;
+  margin-top: 16px;
+  background-color: ${theme.colors.neutralOrange};
+  border-radius: ${theme.borderRadius.sm};
+  width: 100%;
+  height: 50px;
+  justify-content: center;
 `;
 
 export const ConfirmButton = styled.TouchableOpacity`
   background-color: ${theme.colors.success};
-  padding: 16px;
   border-radius: ${theme.borderRadius.md};
   width: 90%;
   align-self: center;
