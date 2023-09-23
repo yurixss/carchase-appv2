@@ -5,17 +5,16 @@ import { api } from '../../services/api';
 import {
   BackButton,
   Body,
-  ButtonContainer,
   ButtonText,
-  ClearButton,
   ConfirmButton,
   Container,
   NextButton,
   Header,
-  StepContainer,
   Title,
-  StepNumber,
   Row,
+  ClearButton,
+  ImageInputContainer,
+  BodyRow,
 } from './styles';
 import { CarImagePicker } from '../../components/shared/ImagePicker';
 import { ControlledTextInput } from '../../components/shared/ControlledTextInput';
@@ -23,8 +22,8 @@ import Toast from 'react-native-toast-message';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { RootStackParamList } from '../../routes';
-import { Switch } from 'react-native-gesture-handler';
 import StepIndicator from 'react-native-step-indicator';
+import TextApp from '../../components/pattern/TextApp';
 
 type DataForm = {
   name: string;
@@ -65,15 +64,16 @@ export default function Announce(): JSX.Element {
   const indicatorLabels = ['Detalhes', 'Fotos', 'Revisão'];
 
   const indicatorStyles = {
-    stepIndicatorSize: 10,
+    stepIndicatorSize: 20,
     stepStrokeCurrentColor: 'orange',
     separatorFinishedColor: 'orange',
     separatorUnFinishedColor: 'orange',
     stepIndicatorFinishedColor: 'orange',
     stepIndicatorUnFinishedColor: 'orange',
     stepIndicatorCurrentColor: 'orange',
-    labelColor: 'orange',
+    labelColor: 'black',
     currentStepLabelColor: 'orange',
+    stepIndicatorLabelCurrentColor: 'white',
   };
 
   const onSubmit = (data) => {
@@ -118,6 +118,10 @@ export default function Announce(): JSX.Element {
           </BackButton>
 
           <Title>Criar ánuncio</Title>
+
+          <ClearButton>
+            <Ionicons name="close" size={24} color={'black'} onPress={() => onReset()} />
+          </ClearButton>
         </Header>
 
         <StepIndicator
@@ -164,13 +168,6 @@ export default function Announce(): JSX.Element {
 
           <ControlledTextInput
             control={control}
-            label="Cor ou cor predominante?"
-            name="color"
-            rules={{ required: true }}
-          />
-
-          <ControlledTextInput
-            control={control}
             label="Kilomentragem"
             name="km"
             rules={{ required: true }}
@@ -207,6 +204,10 @@ export default function Announce(): JSX.Element {
           </BackButton>
 
           <Title>Criar ánuncio</Title>
+
+          <ClearButton>
+            <Ionicons name="close" size={24} color={'black'} onPress={() => onReset()} />
+          </ClearButton>
         </Header>
 
         <StepIndicator
@@ -221,13 +222,16 @@ export default function Announce(): JSX.Element {
           <Title>Fotos do seu veículo</Title>
         </Row>
 
-        <Body>
-          <CarImagePicker />
+        <BodyRow>
+          <CarImagePicker title="Foto da frente" />
+          <CarImagePicker title="Foto da traseira" />
+          <CarImagePicker title="Foto dos lados" />
+          <CarImagePicker title="Foto do interior" />
 
           <NextButton title="Próximo passo" onPress={() => setStep('review')}>
             <ButtonText>Próximo</ButtonText>
           </NextButton>
-        </Body>
+        </BodyRow>
       </>
     );
   };
@@ -247,6 +251,10 @@ export default function Announce(): JSX.Element {
           </BackButton>
 
           <Title>Criar ánuncio</Title>
+
+          <ClearButton>
+            <Ionicons name="close" size={24} color={'black'} onPress={() => onReset()} />
+          </ClearButton>
         </Header>
 
         <StepIndicator

@@ -11,6 +11,14 @@ export const Body = styled.View`
   align-items: center;
 `;
 
+export const BodyRow = styled.View`
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px;
+  align-items: center;
+`;
+
 export const Header = styled.View`
   flex-direction: row;
   padding-top: 40px;
@@ -18,6 +26,7 @@ export const Header = styled.View`
   height: 120px;
   gap: 16px;
   align-items: center;
+  justify-content: space-between;
   background-color: ${theme.colors.neutralOrange};
   margin-bottom: 20px;
 `;
@@ -35,34 +44,11 @@ export const Row = styled.View`
   margin-top: 16px;
 `;
 
-export const StepContainer = styled.View`
-  background-color: white;
-  border-radius: ${theme.borderRadius.md};
-`;
-
-export const StepNumber = styled.Text`
-  font-size: 15px;
-  font-weight: bold;
-  color: ${theme.colors.neutralOrange};
-  margin-top: 5px;
-`;
-
-export const ButtonContainer = styled.View`
-  flex-direction: row;
-  gap: 10px;
-  margin-top: auto;
-  margin-left: auto;
-  margin-right: 16px;
-  height: 50px;
-  width: 160px;
-`;
-
 export const ClearButton = styled.TouchableOpacity`
-  background-color: ${theme.colors.error};
-  border-radius: ${theme.borderRadius.md};
+  margin-right: 16px;
   padding: 8px;
-  width: 48%;
-  align-self: center;
+  background-color: ${theme.colors.neutralWhite};
+  border-radius: ${theme.borderRadius.md};
 `;
 
 export const BackButton = styled.TouchableOpacity`
@@ -90,8 +76,15 @@ export const ConfirmButton = styled.TouchableOpacity`
 `;
 
 export const ButtonText = styled.Text`
-  font-size: 12px;
+  font-size: 14px;
   color: #fff;
   font-weight: bold;
   text-align: center;
+`;
+
+export const ImageInputContainer = styled.View`
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
 `;

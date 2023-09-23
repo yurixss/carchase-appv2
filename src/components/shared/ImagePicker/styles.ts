@@ -1,17 +1,18 @@
 import styled from 'styled-components/native';
 import { theme } from '../../../theme';
 
+export const Container = styled.View``;
+
 export const Button = styled.TouchableOpacity`
-  flex-direction: row;
   gap: 10px;
-  padding: 16px;
+  padding: 40px;
+  align-items: center;
   background-color: ${theme.colors.secondary};
-  border-radius: ${theme.borderRadius.lg};
-  align-self: center;
+  border-radius: ${theme.borderRadius.md};
 `;
 
 export const Text = styled.Text`
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   color: white;
   align-self: center;

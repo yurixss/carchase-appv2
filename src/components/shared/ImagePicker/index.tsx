@@ -4,10 +4,14 @@ import { View, Image } from 'react-native';
 import React from 'react';
 import { storage } from '../../../../firebase.config';
 import { ref, uploadBytes } from 'firebase/storage';
-import { Button, Icon, Text } from './styles';
+import { Button, Container, Text } from './styles';
 import { Ionicons } from '@expo/vector-icons';
 
-export const CarImagePicker = () => {
+type Props = {
+  title: string;
+};
+
+export const CarImagePicker = ({ title }: Props) => {
   const [image, setImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -51,11 +55,11 @@ export const CarImagePicker = () => {
   };
 
   return (
-    <View>
+    <Container>
       {!image ? (
         <Button onPress={pickImage}>
-          <Text>Selecionar Imagem</Text>
-          <Ionicons name="image-outline" size={24} color="white" />
+          <Text>{title}</Text>
+          <Ionicons name="image-outline" size={32} color="white" />
         </Button>
       ) : (
         <View>
@@ -64,6 +68,6 @@ export const CarImagePicker = () => {
         </View>
       )}
       {isLoading && <Text>Loading...</Text>}
-    </View>
+    </Container>
   );
 };
