@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
-import { useForm } from 'react-hook-form';
+import { set, useForm } from 'react-hook-form';
 import { api } from '../../services/api';
 import {
   BackButton,
@@ -24,6 +24,7 @@ import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { RootStackParamList } from '../../routes';
 import { Switch } from 'react-native-gesture-handler';
+import StepIndicator from 'react-native-step-indicator';
 
 type DataForm = {
   name: string;
@@ -60,6 +61,20 @@ export default function Announce(): JSX.Element {
       description: '',
     },
   });
+
+  const indicatorLabels = ['Detalhes', 'Fotos', 'Revisão'];
+
+  const indicatorStyles = {
+    stepIndicatorSize: 10,
+    stepStrokeCurrentColor: 'orange',
+    separatorFinishedColor: 'orange',
+    separatorUnFinishedColor: 'orange',
+    stepIndicatorFinishedColor: 'orange',
+    stepIndicatorUnFinishedColor: 'orange',
+    stepIndicatorCurrentColor: 'orange',
+    labelColor: 'orange',
+    currentStepLabelColor: 'orange',
+  };
 
   const onSubmit = (data) => {
     setIsLoading(true);
@@ -105,10 +120,15 @@ export default function Announce(): JSX.Element {
           <Title>Criar ánuncio</Title>
         </Header>
 
+        <StepIndicator
+          stepCount={3}
+          customStyles={indicatorStyles}
+          currentPosition={0}
+          labels={indicatorLabels}
+          direction="horizontal"
+        />
+
         <Row>
-          <StepContainer>
-            <StepNumber>1 de 3</StepNumber>
-          </StepContainer>
           <Title>Detalhes do veículo</Title>
         </Row>
 
@@ -189,10 +209,15 @@ export default function Announce(): JSX.Element {
           <Title>Criar ánuncio</Title>
         </Header>
 
+        <StepIndicator
+          stepCount={3}
+          customStyles={indicatorStyles}
+          currentPosition={1}
+          labels={indicatorLabels}
+          direction="horizontal"
+        />
+
         <Row>
-          <StepContainer>
-            <StepNumber>2 de 3</StepNumber>
-          </StepContainer>
           <Title>Fotos do seu veículo</Title>
         </Row>
 
@@ -224,10 +249,15 @@ export default function Announce(): JSX.Element {
           <Title>Criar ánuncio</Title>
         </Header>
 
+        <StepIndicator
+          stepCount={3}
+          customStyles={indicatorStyles}
+          currentPosition={2}
+          labels={indicatorLabels}
+          direction="horizontal"
+        />
+
         <Row>
-          <StepContainer>
-            <StepNumber>2 de 3</StepNumber>
-          </StepContainer>
           <Title>Fotos do seu veículo</Title>
         </Row>
 

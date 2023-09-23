@@ -7,7 +7,7 @@ export const Container = styled.ScrollView`
 `;
 
 export const Body = styled.View`
-  padding: 20px;
+  padding: 40px;
   align-items: center;
 `;
 
@@ -19,6 +19,7 @@ export const Header = styled.View`
   gap: 16px;
   align-items: center;
   background-color: ${theme.colors.neutralOrange};
+  margin-bottom: 20px;
 `;
 
 export const Title = styled.Text`
