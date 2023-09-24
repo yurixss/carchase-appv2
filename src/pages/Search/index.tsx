@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
 import { FlatList } from 'react-native';
 import { useState, useEffect } from 'react';
 import { api } from '../../services/api';

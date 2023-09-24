@@ -4,7 +4,7 @@ import { theme } from '../../../theme';
 export const Container = styled.div`
   position: absolute;
   border-radius: ${theme.borderRadius.md};
-  background-color: ${theme.colors.neutralOrange};
+  background-color: ${theme.colors.primary};
   padding: 10px;
   gap: 10px;
   align-items: center;

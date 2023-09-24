@@ -6,8 +6,33 @@ export const Container = styled.ScrollView`
   background-color: white;
 `;
 
+export const Header = styled.View`
+  background-color: ${theme.colors.primary};
+  flex-direction: row;
+  height: 120px;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+  padding-top: 50px;
+`;
+
+export const Title = styled.Text`
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+`;
+
+export const Subtitle = styled.Text`
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  margin-left: 16px;
+  margin-top: 16px;
+`;
+
 export const Body = styled.View`
-  padding: 40px;
+  padding: 30px;
   align-items: center;
 `;
 
@@ -19,24 +44,6 @@ export const BodyRow = styled.View`
   align-items: center;
 `;
 
-export const Header = styled.View`
-  flex-direction: row;
-  padding-top: 40px;
-  padding-left: 20px;
-  height: 120px;
-  gap: 16px;
-  align-items: center;
-  justify-content: space-between;
-  background-color: ${theme.colors.neutralOrange};
-  margin-bottom: 20px;
-`;
-
-export const Title = styled.Text`
-  font-size: 20px;
-  font-weight: bold;
-  color: black;
-`;
-
 export const Row = styled.View`
   flex-direction: column;
   gap: 10px;
@@ -46,20 +53,15 @@ export const Row = styled.View`
 
 export const ClearButton = styled.TouchableOpacity`
   margin-right: 16px;
-  padding: 8px;
-  background-color: ${theme.colors.neutralWhite};
-  border-radius: ${theme.borderRadius.md};
 `;
 
 export const BackButton = styled.TouchableOpacity`
-  background-color: white;
-  padding: 8px;
-  border-radius: ${theme.borderRadius.md};
+  margin-left: 16px;
 `;
 
 export const NextButton = styled.TouchableOpacity`
   margin-top: 16px;
-  background-color: ${theme.colors.neutralOrange};
+  background-color: ${theme.colors.primary};
   border-radius: ${theme.borderRadius.sm};
   width: 100%;
   height: 50px;

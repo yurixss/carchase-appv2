@@ -46,7 +46,7 @@ export const RegisterButton = styled.TouchableOpacity`
   height: 50px;
   width: 60%;
   align-self: center;
-  background-color: ${theme.colors.neutralOrange};
+  background-color: ${theme.colors.primary};
   border-radius: ${theme.borderRadius.sm};
   justify-content: center;
   align-items: center;

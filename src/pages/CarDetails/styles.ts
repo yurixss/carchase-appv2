@@ -103,7 +103,7 @@ export const ConfirmButton = styled.TouchableOpacity`
 `;
 
 export const NextButton = styled.TouchableOpacity`
-  background-color: ${theme.colors.neutralOrange};
+  background-color: ${theme.colors.primary};
   padding: 24px;
   border-radius: ${theme.borderRadius.xl};
   width: 49%;

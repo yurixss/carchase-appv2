@@ -2,18 +2,22 @@ import styled from 'styled-components/native';
 import H1 from '../../components/pattern/H1';
 import { theme } from '../../theme';
 
-export const Container = styled.SafeAreaView`
+export const Container = styled.ScrollView`
   flex: 1;
+`;
+
+export const Header = styled.View`
+  height: 100px;
+  background-color: ${theme.colors.primary};
 `;
 
 export const Body = styled.ScrollView`
   padding: 16px;
 `;
 
-export const Header = styled.View`
+export const ProfileContainer = styled.View`
   height: 200px;
   gap: 10px;
-  margin-bottom: 16px;
 `;
 
 export const ProfileImage = styled.Image`
@@ -21,7 +25,7 @@ export const ProfileImage = styled.Image`
   height: 120px;
   width: 120px;
   align-self: center;
-  margin-top: 25px;
+  margin-top: 16px;
 `;
 
 export const Text = styled.Text`
@@ -33,7 +37,7 @@ export const Text = styled.Text`
 
 export const LogoutButton = styled.TouchableOpacity`
   border-radius: ${theme.borderRadius.md};
-  background-color: ${theme.colors.secondary};
+  background-color: ${theme.colors.error};
   align-self: center;
   margin-bottom: 50px;
   padding: 10px;
@@ -49,4 +53,10 @@ export const ButtonText = styled.Text`
   align-self: center;
 `;
 
-export const Title = styled(H1)``;
+export const Title = styled.Text`
+  color: ${theme.colors.neutralWhite};
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 60px;
+  margin-left: 10px;
+`;

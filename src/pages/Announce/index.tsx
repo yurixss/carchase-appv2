@@ -15,6 +15,7 @@ import {
   ClearButton,
   ImageInputContainer,
   BodyRow,
+  Subtitle,
 } from './styles';
 import { CarImagePicker } from '../../components/shared/ImagePicker';
 import { ControlledTextInput } from '../../components/shared/ControlledTextInput';
@@ -24,6 +25,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { RootStackParamList } from '../../routes';
 import StepIndicator from 'react-native-step-indicator';
 import TextApp from '../../components/pattern/TextApp';
+import { ArrowBendUpLeft, Eraser } from 'phosphor-react-native';
 
 type DataForm = {
   name: string;
@@ -65,14 +67,14 @@ export default function Announce(): JSX.Element {
 
   const indicatorStyles = {
     stepIndicatorSize: 20,
-    stepStrokeCurrentColor: 'orange',
-    separatorFinishedColor: 'orange',
-    separatorUnFinishedColor: 'orange',
-    stepIndicatorFinishedColor: 'orange',
-    stepIndicatorUnFinishedColor: 'orange',
-    stepIndicatorCurrentColor: 'orange',
+    stepStrokeCurrentColor: '#b6d89c',
+    separatorFinishedColor: '#b6d89c',
+    separatorUnFinishedColor: '#b6d89c',
+    stepIndicatorFinishedColor: '#b6d89c',
+    stepIndicatorUnFinishedColor: '#b6d89c',
+    stepIndicatorCurrentColor: '#b6d89c',
     labelColor: 'black',
-    currentStepLabelColor: 'orange',
+    currentStepLabelColor: '#b6d89c',
     stepIndicatorLabelCurrentColor: 'white',
   };
 
@@ -108,19 +110,14 @@ export default function Announce(): JSX.Element {
     return (
       <>
         <Header>
-          <BackButton>
-            <Ionicons
-              name="arrow-back"
-              size={24}
-              color={'black'}
-              onPress={() => navigation.navigate('Home')}
-            />
+          <BackButton onPress={() => navigation.navigate('Home')}>
+            <ArrowBendUpLeft color="white" weight="fill" size={24} />
           </BackButton>
 
           <Title>Criar ánuncio</Title>
 
-          <ClearButton>
-            <Ionicons name="close" size={24} color={'black'} onPress={() => onReset()} />
+          <ClearButton onPress={() => onReset()}>
+            <Eraser color="white" weight="fill" size={24} />
           </ClearButton>
         </Header>
 
@@ -132,9 +129,7 @@ export default function Announce(): JSX.Element {
           direction="horizontal"
         />
 
-        <Row>
-          <Title>Detalhes do veículo</Title>
-        </Row>
+        <Subtitle>Detalhes do veículo</Subtitle>
 
         <Body>
           <ControlledTextInput
@@ -142,6 +137,7 @@ export default function Announce(): JSX.Element {
             label="Modelo do carro"
             name="name"
             rules={{ required: true }}
+            placeholder="Ex: Argo"
           />
 
           <ControlledTextInput
@@ -149,6 +145,7 @@ export default function Announce(): JSX.Element {
             label="Placa"
             name="name"
             rules={{ required: true }}
+            placeholder="Ex: ABC-1234"
           />
 
           <ControlledTextInput
@@ -156,6 +153,7 @@ export default function Announce(): JSX.Element {
             label="Marca ou empresa"
             name="model"
             rules={{ required: true }}
+            placeholder="Ex: Fiat"
           />
 
           <ControlledTextInput
@@ -168,21 +166,14 @@ export default function Announce(): JSX.Element {
 
           <ControlledTextInput
             control={control}
-            label="Kilomentragem"
-            name="km"
-            rules={{ required: true }}
-            placeholder="Ex: 12.943"
-          />
-
-          <ControlledTextInput
-            control={control}
             label="Preço"
             name="price"
             rules={{ required: true }}
+            placeholder="Ex: R$89,000"
           />
 
-          <NextButton title="Próximo passo" onPress={() => setStep('photos')}>
-            <ButtonText>Próximo</ButtonText>
+          <NextButton onPress={() => setStep('photos')}>
+            <ButtonText>Próximo passo</ButtonText>
           </NextButton>
         </Body>
       </>
@@ -194,19 +185,14 @@ export default function Announce(): JSX.Element {
     return (
       <>
         <Header>
-          <BackButton>
-            <Ionicons
-              name="arrow-back"
-              size={24}
-              color={'black'}
-              onPress={() => setStep('details')}
-            />
+          <BackButton onPress={() => setStep('details')}>
+            <ArrowBendUpLeft color="white" weight="fill" size={24} />
           </BackButton>
 
           <Title>Criar ánuncio</Title>
 
-          <ClearButton>
-            <Ionicons name="close" size={24} color={'black'} onPress={() => onReset()} />
+          <ClearButton onPress={() => onReset()}>
+            <Eraser color="white" weight="fill" size={24} />
           </ClearButton>
         </Header>
 
@@ -218,9 +204,7 @@ export default function Announce(): JSX.Element {
           direction="horizontal"
         />
 
-        <Row>
-          <Title>Fotos do seu veículo</Title>
-        </Row>
+        <Subtitle>Fotos do seu veículo</Subtitle>
 
         <BodyRow>
           <CarImagePicker title="Foto da frente" />
@@ -228,7 +212,7 @@ export default function Announce(): JSX.Element {
           <CarImagePicker title="Foto dos lados" />
           <CarImagePicker title="Foto do interior" />
 
-          <NextButton title="Próximo passo" onPress={() => setStep('review')}>
+          <NextButton onPress={() => setStep('review')}>
             <ButtonText>Próximo</ButtonText>
           </NextButton>
         </BodyRow>
@@ -241,19 +225,14 @@ export default function Announce(): JSX.Element {
     return (
       <>
         <Header>
-          <BackButton>
-            <Ionicons
-              name="arrow-back"
-              size={24}
-              color={'black'}
-              onPress={() => setStep('photos')}
-            />
+          <BackButton onPress={() => setStep('photos')}>
+            <ArrowBendUpLeft color="white" weight="fill" size={24} />
           </BackButton>
 
           <Title>Criar ánuncio</Title>
 
-          <ClearButton>
-            <Ionicons name="close" size={24} color={'black'} onPress={() => onReset()} />
+          <ClearButton onPress={() => onReset()}>
+            <Eraser color="white" weight="fill" size={24} />
           </ClearButton>
         </Header>
 
@@ -265,39 +244,13 @@ export default function Announce(): JSX.Element {
           direction="horizontal"
         />
 
-        <Row>
-          <Title>Fotos do seu veículo</Title>
-        </Row>
+        <Subtitle>Detalhes finais </Subtitle>
 
         <Body>
           <ControlledTextInput
             control={control}
             label="Descreva seu carro, o que ele tem de especial?"
             name="description"
-            rules={{ required: true }}
-          />
-          <ControlledTextInput
-            control={control}
-            label="Usado ou novo?"
-            name="price"
-            rules={{ required: true }}
-          />
-          <ControlledTextInput
-            control={control}
-            label="Possui multas?"
-            name="price"
-            rules={{ required: true }}
-          />
-          <ControlledTextInput
-            control={control}
-            label="Possui riscos?"
-            name="price"
-            rules={{ required: true }}
-          />
-          <ControlledTextInput
-            control={control}
-            label="Possui sinistros?"
-            name="price"
             rules={{ required: true }}
           />
 

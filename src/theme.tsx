@@ -1,14 +1,12 @@
 export const theme = {
   colors: {
-    primary: '#1b1b1f',
-    secondary: '#7a7a80',
-    body: '#f4f5f6',
-    success: '#36db18',
-    error: '#dc1637',
+    primary: '#353432',
+    secondary: '#b6d89c',
+    success: '#b6d89c',
+    error: '#f87887',
     neutralOrange: 'orange',
     neutralBlack: 'black',
     neutralWhite: 'white',
-    background_details: '#f5f5f5',
   },
   fontsSizes: {
     sm: '12px',

@@ -1,14 +1,14 @@
 import React from 'react';
-import TextApp from '../../components/pattern/TextApp';
 import {
   Body,
   Container,
-  Header,
   LogoutButton,
   ProfileImage,
   Title,
   Text,
   ButtonText,
+  ProfileContainer,
+  Header,
 } from './styles';
 import { SimpleCard } from '../../components/shared/SimpleCard';
 
@@ -19,12 +19,14 @@ export const Configs = ({ navigation }) => {
   const defaultImage = require('/Users/yurixss/carchase-appv2/assets/me.jpg');
   return (
     <Container>
-      <Title>Configurações Gerais</Title>
       <Header>
+        <Title>Configurações Gerais</Title>
+      </Header>
+      <ProfileContainer>
         <ProfileImage source={defaultImage} />
         <Text>Yuri Nunes</Text>
         <Text>yurinuness777@gmail.com</Text>
-      </Header>
+      </ProfileContainer>
       <Body>
         <SimpleCard title="Configurações do Usuário" />
         <SimpleCard title="Ver/Editar seus Ánuncios" />

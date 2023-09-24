@@ -5,7 +5,7 @@ export const Container = styled.View``;
 
 export const Button = styled.TouchableOpacity`
   gap: 10px;
-  padding: 40px;
+  padding: 30px;
   align-items: center;
   background-color: ${theme.colors.secondary};
   border-radius: ${theme.borderRadius.md};
