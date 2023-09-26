@@ -9,6 +9,7 @@ import { CarDetails } from './pages/CarDetails';
 import { Configs } from './pages/Configs';
 import Login from './pages/Login';
 import { screenWidth } from './utils';
+import { Register } from './pages/Register';
 
 //tipando para n dar error 'parâmetro do tipo 'never'.ts'
 export type RootStackParamList = {
@@ -150,6 +151,7 @@ export function Routes(): JSX.Element {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="HomeTabs" component={BottomTabNavigator} />
       <Stack.Screen name="CarDetails" component={CarDetails} />
     </Stack.Navigator>

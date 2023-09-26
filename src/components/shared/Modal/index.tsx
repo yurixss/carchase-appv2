@@ -1,7 +1,7 @@
 import React from 'react';
-import { Modal } from 'react-native';
+import { Modal, TouchableOpacity } from 'react-native';
 import { Container, Subtitle, Title } from './styles';
-import { Heart } from 'phosphor-react-native';
+import { CheckSquare, Heart, XCircle } from 'phosphor-react-native';
 
 export type ConfirmModalProps = {
   isOpen: boolean;
@@ -16,7 +16,7 @@ export const ConfirmModal = ({ isOpen, title, subtitle, onClose }: ConfirmModalP
       {isOpen && (
         <Modal visible={isOpen}>
           <Container>
-            <Heart color="#AE2983" weight="fill" size={32} />
+            <CheckSquare color="white" weight="fill" size={32} />
             <Title>{title}</Title>
             <Subtitle>{subtitle}</Subtitle>
           </Container>

@@ -19,6 +19,10 @@ export default function Login({ navigation }) {
     navigation.navigate('HomeTabs', { screen: 'Home' });
   };
 
+  const Register = () => {
+    navigation.navigate('Register');
+  };
+
   return (
     <Container>
       <Logo source={defaultImage} />
@@ -34,7 +38,7 @@ export default function Login({ navigation }) {
         <LoginButton title="Login" onPress={handleLogin}>
           <LoginButtonText>Login</LoginButtonText>
         </LoginButton>
-        <RegisterButton title="Login" onPress={handleLogin}>
+        <RegisterButton title="Login" onPress={Register}>
           <LoginButtonText>Realizar Cadastro</LoginButtonText>
         </RegisterButton>
       </InputContainer>

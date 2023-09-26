@@ -1,15 +1,14 @@
 import styled from 'styled-components';
 import { theme } from '../../../theme';
 
-export const Container = styled.div`
+export const Container = styled.View`
   position: absolute;
   border-radius: ${theme.borderRadius.md};
-  background-color: ${theme.colors.primary};
+  background-color: 'rgba(0, 0, 0, 0.5)';
   padding: 10px;
   gap: 10px;
-  align-items: center;
-  justify-content: center;
   align-self: center;
+  margin-top: 50%;
 `;
 
 export const Title = styled.Text`

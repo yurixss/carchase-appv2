@@ -26,6 +26,7 @@ import { RootStackParamList } from '../../routes';
 import StepIndicator from 'react-native-step-indicator';
 import TextApp from '../../components/pattern/TextApp';
 import { ArrowBendUpLeft, Eraser } from 'phosphor-react-native';
+import { ConfirmModal } from '../../components/shared/Modal';
 
 type DataForm = {
   name: string;
@@ -43,6 +44,7 @@ type DataForm = {
 export default function Announce(): JSX.Element {
   const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation<NavigationProp<RootStackParamList, 'Home'>>();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [step, setStep] = useState<'details' | 'photos' | 'review'>('details');
   const {
     register,
@@ -105,6 +107,14 @@ export default function Announce(): JSX.Element {
     reset();
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   //step 1
   const details = () => {
     return (
@@ -116,7 +126,7 @@ export default function Announce(): JSX.Element {
 
           <Title>Criar ánuncio</Title>
 
-          <ClearButton onPress={() => onReset()}>
+          <ClearButton onPress={openModal}>
             <Eraser color="white" weight="fill" size={24} />
           </ClearButton>
         </Header>
@@ -175,6 +185,13 @@ export default function Announce(): JSX.Element {
           <NextButton onPress={() => setStep('photos')}>
             <ButtonText>Próximo passo</ButtonText>
           </NextButton>
+
+          <ConfirmModal
+            isOpen={isModalOpen}
+            title="Confirmação"
+            subtitle="Você tem certeza de que deseja limpar?"
+            onClose={closeModal}
+          />
         </Body>
       </>
     );
