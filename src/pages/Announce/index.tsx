@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 import { set, useForm } from 'react-hook-form';
 import { api } from '../../services/api';
 import {
@@ -21,12 +21,10 @@ import { CarImagePicker } from '../../components/shared/ImagePicker';
 import { ControlledTextInput } from '../../components/shared/ControlledTextInput';
 import Toast from 'react-native-toast-message';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { Ionicons } from '@expo/vector-icons';
 import { RootStackParamList } from '../../routes';
 import StepIndicator from 'react-native-step-indicator';
-import TextApp from '../../components/pattern/TextApp';
 import { ArrowBendUpLeft, Eraser } from 'phosphor-react-native';
-import { ConfirmModal } from '../../components/shared/Modal';
+import { ConfirmModal, ConfirmModalProps } from '../../components/shared/Modal';
 
 type DataForm = {
   name: string;
@@ -44,7 +42,7 @@ type DataForm = {
 export default function Announce(): JSX.Element {
   const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation<NavigationProp<RootStackParamList, 'Home'>>();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [confirmModal, setConfirmModal] = useState<ConfirmModalProps>({} as ConfirmModalProps);
   const [step, setStep] = useState<'details' | 'photos' | 'review'>('details');
   const {
     register,
@@ -104,15 +102,29 @@ export default function Announce(): JSX.Element {
   };
 
   const onReset = () => {
-    reset();
-  };
+    const modal_props: ConfirmModalProps = {
+      ...confirmModal,
+      title: 'Tem certeza que deseja limpar?',
+      subtitle: 'Voce ira perder todos os dados salvos',
+      isOpen: true,
+    };
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
+    setConfirmModal({
+      ...modal_props,
+      onConfirm: async () => {
+        setConfirmModal({
+          ...modal_props,
+          isOpen: false,
+        });
+        reset();
+      },
+      onCancel: () => {
+        setConfirmModal({
+          ...modal_props,
+          isOpen: false,
+        });
+      },
+    });
   };
 
   //step 1
@@ -126,7 +138,7 @@ export default function Announce(): JSX.Element {
 
           <Title>Criar ánuncio</Title>
 
-          <ClearButton onPress={openModal}>
+          <ClearButton onPress={onReset}>
             <Eraser color="white" weight="fill" size={24} />
           </ClearButton>
         </Header>
@@ -153,7 +165,7 @@ export default function Announce(): JSX.Element {
           <ControlledTextInput
             control={control}
             label="Placa"
-            name="name"
+            name="plate"
             rules={{ required: true }}
             placeholder="Ex: ABC-1234"
           />
@@ -185,13 +197,6 @@ export default function Announce(): JSX.Element {
           <NextButton onPress={() => setStep('photos')}>
             <ButtonText>Próximo passo</ButtonText>
           </NextButton>
-
-          <ConfirmModal
-            isOpen={isModalOpen}
-            title="Confirmação"
-            subtitle="Você tem certeza de que deseja limpar?"
-            onClose={closeModal}
-          />
         </Body>
       </>
     );
@@ -291,5 +296,10 @@ export default function Announce(): JSX.Element {
     return <View>{stack[step]()}</View>;
   };
 
-  return <Container>{drawers()}</Container>;
+  return (
+    <>
+      <Container>{drawers()}</Container>
+      <ConfirmModal {...confirmModal}></ConfirmModal>
+    </>
+  );
 }

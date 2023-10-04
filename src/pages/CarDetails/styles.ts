@@ -55,7 +55,7 @@ export const RowCards = styled.View`
 export const CardContainer = styled.View`
   height: 40px;
   min-width: 80px;
-  background-color: ${theme.colors.background_details};
+  background-color: ${theme.colors.success};
   border-radius: ${theme.borderRadius.lg};
   padding: 8px;
 `;
@@ -103,7 +103,7 @@ export const ConfirmButton = styled.TouchableOpacity`
 `;
 
 export const NextButton = styled.TouchableOpacity`
-  background-color: ${theme.colors.primary};
+  background-color: ${theme.colors.error};
   padding: 24px;
   border-radius: ${theme.borderRadius.xl};
   width: 49%;
@@ -111,7 +111,7 @@ export const NextButton = styled.TouchableOpacity`
 
 export const ButtonText = styled.Text`
   font-size: 12px;
-  color: black;
+  color: white;
   font-weight: bold;
   text-align: center;
 `;
